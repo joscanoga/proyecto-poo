@@ -16,7 +16,8 @@ public abstract class cuenta {
 	public abstract String toString();
 
 }
-public class cuentaCredito extends cuenta {
-	protected usuarioRegistrado getTitular() {};
+
+class cuentaCredito extends cuenta {
+	// protected usuarioRegistrado getTitular() {};
 	public  String toString() {return(" ");}
 }
