@@ -1,5 +1,5 @@
 package gestionAplicacion.usuarios;
 
-public class usuarioRegistrado {
+public class UsuarioRegistrado {
 	
 }
