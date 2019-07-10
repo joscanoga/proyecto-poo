@@ -1,18 +1,24 @@
 
 package gestionAplicacion.cuentas;
 
-import gestionAplicacion.usuarios.UsuarioRegistrado;
+import gestionAplicacion.usuarios.Usuario;
 
 public abstract class Cuenta {
-	private String id;
-	private UsuarioRegistrado titular;
-	protected  String getid() {
+	private int id;
+	private Usuario titular;
+	static int numeroCuentas;
+	protected  int getid() {
 		return(id);
 	}
-	protected UsuarioRegistrado getTitular() {
-		return titular;
+	protected Usuario getTitular() {
+		return(titular);
 	}
 	
 	public abstract String toString();
-
+	protected Cuenta(Usuario titu) {
+		numeroCuentas++;
+		id=numeroCuentas;
+		titular=titu;
+	}
+	
 }
