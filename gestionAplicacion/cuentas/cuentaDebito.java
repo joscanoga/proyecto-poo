@@ -1,5 +1,3 @@
-package gestionAplicacion.cuentas;
-
-public class cuentaDebito extends cuenta {
+public class CuentaDebito extends Cuenta {
 
 }

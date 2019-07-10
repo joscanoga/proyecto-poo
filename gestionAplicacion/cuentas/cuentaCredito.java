@@ -1,8 +1,8 @@
 package gestionAplicacion.cuentas;
-import gestionAplicacion.usuarios.*;
 
+import gestionAplicacion.usuarios.Usuario;
 
-public class cuentaCredito extends cuenta {
+public class CuentaCredito extends Cuenta {
 	private float deuda;
 	private float cupo;
 	private static float interes=(float) 2.5;
@@ -13,8 +13,7 @@ public class cuentaCredito extends cuenta {
 	public float getIntereses() {return interes;}
 	public Credito[] getCreditos(){return creditos;}
 	
-	public  String toString() {return("esto es una cuenta credito ");}
-	public cuentaCredito(usuario u) {
+	public CuentaCredito(Usuario u) {
 		super(u);
 		deuda=0;
 		cupo=1000000;

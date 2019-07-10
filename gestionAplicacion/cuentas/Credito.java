@@ -2,18 +2,18 @@ package gestionAplicacion.cuentas;
 
 public class Credito {
 	private int id;
-	private cuentaCredito cuentaAsociada;
+	private CuentaCredito cuentaAsociada;
 	private float monto;
 	private float montoPendiente;//ver si se puede agregar al uml
 	private float  valorCuota;//agregar uml
 	int cuotas;
 	private static int numeroCreditos;
 	public float getId() {return id;}
-	public cuentaCredito getCuentaAsociada() {return cuentaAsociada;}
+	public CuentaCredito getCuentaAsociada() {return cuentaAsociada;}
 	public int getCuotas() {return cuotas;}
 	public int getnumerocreditos() {return numeroCreditos;}
 	public float getMonto() {return monto;}
-	Credito (cuentaCredito c,float m,int cu){
+	Credito (CuentaCredito c,float m,int cu){
 		//implementar try 2 trabajo
 		cuentaAsociada=c;
 		numeroCreditos++;

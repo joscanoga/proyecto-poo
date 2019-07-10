@@ -14,7 +14,6 @@ public abstract class Cuenta {
 		return(titular);
 	}
 	
-	public abstract String toString();
 	protected Cuenta(Usuario titu) {
 		numeroCuentas++;
 		id=numeroCuentas;
