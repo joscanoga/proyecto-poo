@@ -2,7 +2,7 @@ package uiMain.menuConsola;
 
 import uiMain.OpcionDeMenu;
 
-class Registrarse implements OpcionDeMenu{
+public class VerCuentas implements OpcionDeMenu{
 	
 	public void ejecutar() {
 		
