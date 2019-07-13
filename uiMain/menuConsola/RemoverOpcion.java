@@ -7,5 +7,8 @@ public class RemoverOpcion implements OpcionDeMenu{
 	public void ejecutar() {
 		
 	}
-	
+
+	public String toString () {
+		return "Remover opción";
+	}
 }

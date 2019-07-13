@@ -1,9 +1,10 @@
 package uiMain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import uiMain.menuConsola.SalirDeLaAplicacion;
 
-public class MenuDeConsola {
+public class MenuDeConsola implements Serializable {
 	ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {
 		{
 			add(new SalirDeLaAplicacion());
@@ -24,4 +25,15 @@ public class MenuDeConsola {
 	void lanzarMenu() {
 
 	}
+	
+	// Temporal
+	@Override
+	public String toString() {
+		String text = "\"";
+		for(OpcionDeMenu opcion : opciones) {
+			text += opcion.getClass().getSimpleName() + " ";
+		} text += "\"";
+		return text;
+	}
+	
 }

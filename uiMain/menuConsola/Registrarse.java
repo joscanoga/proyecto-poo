@@ -7,5 +7,8 @@ public class Registrarse implements OpcionDeMenu{
 	public void ejecutar() {
 		
 	}
-	
+
+	public String toString () {
+		return "Registrarse";
+	}
 }

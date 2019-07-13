@@ -21,7 +21,6 @@ public class Usuario implements Serializable {
 			menuDefectoRegistrado = new MenuDeConsola(
 					new OpcionDeMenu[] { new CambiarContrasena(), new CerrarSesion(), new CrearCDT(),
 							new CrearCuentaCredito(), new CrearCuentaDebito(), new ManejarCuenta(), new VerCuentas() });
-
 	// Los invitados serán los usuarios que se crean con el constructor por defecto
 	public Usuario() {
 		id = contador++;
@@ -78,8 +77,10 @@ public class Usuario implements Serializable {
 	// Temporal
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario=" + nombreUsuario + ", contrasena="
-				+ contrasena + ", nombre=" + nombre + "]";
+		return "Usuario [id=" + id + ", menu=" + menu.toString() + ", esAdmin=" + esAdmin + ", nombreUsuario=" + nombreUsuario
+				+ ", contrasena=" + contrasena + ", nombre=" + nombre + ", contador=" + contador + ", cuentas=" + cuentas + "]";
 	}
+
+	
 
 }

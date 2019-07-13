@@ -1,5 +1,7 @@
 package uiMain;
 
-public interface OpcionDeMenu {
+import java.io.Serializable;
+
+public interface OpcionDeMenu extends Serializable {
 	void ejecutar();
 }

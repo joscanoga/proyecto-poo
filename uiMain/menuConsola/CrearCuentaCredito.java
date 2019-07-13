@@ -8,4 +8,8 @@ public class CrearCuentaCredito implements OpcionDeMenu{
 		
 	}
 	
+	public String toString () {
+		return "Crear cuenta crédito";
+	}
+	
 }
