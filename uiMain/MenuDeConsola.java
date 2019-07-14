@@ -25,15 +25,16 @@ public class MenuDeConsola implements Serializable {
 	void lanzarMenu() {
 
 	}
-	
+
 	// Temporal
 	@Override
 	public String toString() {
 		String text = "\"";
-		for(OpcionDeMenu opcion : opciones) {
+		for (OpcionDeMenu opcion : opciones) {
 			text += opcion.getClass().getSimpleName() + " ";
-		} text += "\"";
+		}
+		text += "\"";
 		return text;
 	}
-	
+
 }

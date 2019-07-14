@@ -1,37 +1,47 @@
 package uiMain;
 
 import gestionAplicacion.usuarios.Usuario;
+import uiMain.OpcionDeMenu;
 import BaseDatos.Serializador;
 import java.io.*;
 import java.util.Scanner;
 import java.util.regex.*;
+import java.util.HashMap;
 
-class Main {
-	private static Usuario usuario;
+public class Main {
+
+	public static Usuario usuario = new Usuario();
+	public static HashMap<String, Usuario> usuarios;
 
 	public static void main(String[] args) throws IOException {
+		String opcion,
+				margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		Scanner input = new Scanner(new BufferedInputStream(System.in));
-		definirUsuarioComoInvitado();
-		Object[] opciones = usuario.getMenu().opciones.toArray();
-		String opcion;
+
+		// Todos los usuarios y administradores registrados en la base de datos
+		usuarios = Serializador.cargar();
+
+		OpcionDeMenu[] opciones = usuario.getMenu().opciones
+				.toArray(new OpcionDeMenu[usuario.getMenu().opciones.size()]);
+
 		for (;;) {
 			opcion = null;
+
 			do {
-				if(opcion != null) 
-					System.out.println("La entrada no corresponde a ningún número de opción válido, inténtalo de nuevo");
-				System.out.format("%-30s%s%n", "OPCIÓN", "NÚMERO");
+				System.out.format(margen + "%-30s%s%n", "OPCIÓN", "NÚMERO");
 				for (byte i = -1; ++i < opciones.length;)
 					System.out.format("%-30s%d%n", opciones[i], i + 1);
-				System.out.print("\nNúmero de la opción a ejectuar: ");
-			} while (!Pattern.compile("\\d+").matcher(opcion = input.next()).matches()
-					|| Integer.parseInt(opcion) < 1 || Integer.parseInt(opcion) > opciones.length);
-			System.out.println("Se llamará el método ejecutar de la opción: " + opciones[Integer.parseInt(opcion) - 1]);
-			System.exit(0);
-		}
-	}
+				if (opcion != null)
+					System.out
+							.print("\nLa entrada \"" + opcion + "\" no corresponde a ningún número de opción válido.");
 
-	public static void definirUsuarioComoInvitado() {
-		usuario = new Usuario();
+				System.out.print("\nIngrese el número de la opción a ejectuar: ");
+			} while (!Pattern.compile("\\d+").matcher(opcion = input.next()).matches() || Integer.parseInt(opcion) < 1
+					|| Integer.parseInt(opcion) > opciones.length);
+
+			opciones[Integer.parseInt(opcion) - 1].ejecutar();
+		}
+
 	}
 
 }
