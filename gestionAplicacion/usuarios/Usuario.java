@@ -16,16 +16,16 @@ public class Usuario implements Serializable {
     private ArrayList<Cuenta> cuentas;
 
     final private MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion"}),
-            menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion", "RemoverOpcion",
-                    "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"}),
-            menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT", "CrearCuentaCredito",
-                    "CrearCuentaDebito", "ManejarCuenta", "VerCuentas"});
+            menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
+                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"}),
+            menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
+                    "CrearCuentaCredito", "CrearCuentaDebito", "ManejarCuenta", "VerCuentas"});
 
     // Los invitados serán los usuarios que se crean con el constructor por defecto
     public Usuario() {
         id = contador++;
         menu = menuDefectoInvitado;
-        nombre = "Invitado" + id;
+        nombre = "Invitado_" + id;
     }
 
     // Constructor para usuarios de tipo administrador y registrado
@@ -72,6 +72,10 @@ public class Usuario implements Serializable {
 
     public ArrayList<Cuenta> getCuentas() {
         return cuentas;
+    }
+
+    public static void setContador(int cont) {
+        contador = cont;
     }
 
     // Temporal

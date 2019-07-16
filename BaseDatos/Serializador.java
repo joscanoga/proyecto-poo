@@ -16,6 +16,13 @@ public class Serializador {
 		try {
 			in = new ObjectInputStream(new BufferedInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\temp\\Usuarios.txt")));
+
+			/* El primer dato que se lee es el valor del campo estático "contador" de Usuario que se tenía antes de
+			 * finalizar la última sesión. Este campo se trata por diferente a los demás ya que el flujo de objetos no
+			 * es consistente en el valor de campos estáticos. Una vez leído dicho dato, se le reasigna al
+			 * correspondiente campo estático "contador" de Usuario para que reanude el conteo donde lo dejó. */
+			Usuario.setContador(in.readInt());
+
 			while (true)
 				usuarios.add((Usuario) in.readObject());
 		} catch (Exception e) {
@@ -38,6 +45,11 @@ public class Serializador {
 		try {
 			out = new ObjectOutputStream(new BufferedOutputStream(
 					new FileOutputStream(System.getProperty("user.dir") + "\\src\\temp\\Usuarios.txt")));
+
+			/* Se envía manualmente el valor del campo estático "contador" de Usuario instantes antes del fin de la
+			 * ejecución de la aplicación, esto para que sea leído de igual forma, manualmente, por la próxima sesión.
+			 */
+			out.writeInt(Usuario.getContador());
 
 			for (Map.Entry<String, Usuario> registro : usuarios.entrySet())
 				out.writeObject(registro.getValue());
