@@ -2,18 +2,15 @@ package uiMain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import uiMain.menuConsola.SalirDeLaAplicacion;
 
 public class MenuDeConsola implements Serializable {
-	ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {
-		{
-			add(new SalirDeLaAplicacion());
-		}
-	};
+	ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
+		add(new uiMain.menuConsola.SalirDeLaAplicacion());
+	}};
 
-	public MenuDeConsola(OpcionDeMenu[] menu) {
-		for (OpcionDeMenu opcion : menu)
-			anadirOpcion(opcion);
+	public MenuDeConsola(String[] menu) {
+		for (String opcion : menu)
+			anadirOpcion(Main.listaOpciones.get(opcion));
 	}
 
 	void anadirOpcion(OpcionDeMenu opcion) {

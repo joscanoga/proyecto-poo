@@ -2,7 +2,7 @@ package gestionAplicacion.cuentas;
 
 public class Credito {
 	private int id;
-	private CuentaCredito cuentaAsociada;
+private CuentaCredito cuentaAsociada;
 	private float monto;
 	private float montoPendiente;//ver si se puede agregar al uml
 	private float  valorCuota;//agregar uml
