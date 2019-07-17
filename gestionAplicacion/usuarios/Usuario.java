@@ -81,9 +81,9 @@ public class Usuario implements Serializable {
     // Temporal
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", menu=" + menu.toString() + ", esAdmin=" + esAdmin + ", nombreUsuario="
+        return "Usuario [id=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario="
                 + nombreUsuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", contador=" + contador
-                + ", cuentas=" + cuentas + "]";
+                + ", cuentas=" + cuentas + ", menu=" + menu.toString() + "]";
     }
 
 }
