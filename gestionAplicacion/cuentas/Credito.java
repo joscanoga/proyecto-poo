@@ -26,8 +26,18 @@ public class Credito {
 			for (int i=1;i<= cu;i++) {intereses+=cuentaAsociada.getIntereses()*(monto-(i-1)*cuo);}
 			montoPendiente=monto+intereses;
 		 valorCuota=montoPendiente/cuotas;
-			
+	//public void debitarCuota() }	
+	
+		
+	}
+		
 		}
+	void pagarParcial(float pago) {
+		//por aca se podrian colocar 2 0 3 funciones "interesantes"
+		montoPendiente-=pago;
+	}
+	float getValorCuota() {
+		return valorCuota;
 	}
 	
 	
