@@ -50,7 +50,8 @@ public class MenuDeConsola implements Serializable {
     public String toString() {
         String text = "";
         for (OpcionDeMenu opcion : opciones)
-            text += opcion.getClass().getSimpleName() + " ";
+            text += opcion.getClass().getSimpleName() + ", ";
+        text = text.substring(0, text.length() - 2);
         return text;
     }
 

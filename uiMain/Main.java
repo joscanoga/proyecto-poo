@@ -31,7 +31,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Todos los usuarios y administradores registrados en la base de datos
         usuarios = Serializador.cargar();
-
         definirInvitado();
 
         for (;;)

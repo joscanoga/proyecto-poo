@@ -1,8 +1,8 @@
 package gestionAplicacion.usuarios;
 
 import gestionAplicacion.cuentas.Cuenta;
+import gestionAplicacion.cuentas.CuentaDebito;
 import uiMain.*;
-import uiMain.menuConsola.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class Usuario implements Serializable {
     private boolean esAdmin;
     private String nombreUsuario, contrasena, nombre;
     static private int contador;
-    private ArrayList<Cuenta> cuentas;
+    private ArrayList<Cuenta> cuentas = new ArrayList<>();
 
     final private MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion"}),
             menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
@@ -65,7 +65,8 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario [id=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario="
                 + nombreUsuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", contador=" + contador
-                + ", cuentas=" + cuentas + ", menu=" + menu.toString() + "]";
+                + ", cuentas =" + cuentas + ", menu=" + menu + "]";
     }
 
+    public void anadirCuenta(CuentaDebito cuentaDebito) { System.out.println(cuentas); cuentas.add(cuentaDebito); }
 }
