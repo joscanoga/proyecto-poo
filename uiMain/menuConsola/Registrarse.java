@@ -24,14 +24,14 @@ public class Registrarse implements OpcionDeMenu{
 			System.out.format("%-20s: ", "Verificar contraseña");
 		} while(!contrasena.equals(entrada.next()));
 
-	System.out.format("%-20s: ", "Ingresa tu nombre");
+		System.out.format("%-20s: ", "Ingresa tu nombre");
+		entrada.nextLine();
 
-		Main.usuarios.put(nombreUsuario, new Usuario(false, nombreUsuario, contrasena, entrada.next()));
+		Main.usuarios.put(nombreUsuario, new Usuario(false, nombreUsuario, contrasena, entrada.nextLine()));
 
-		System.out.println("Usuario creado exitosamente.");
+		System.out.print(margen + "Usuario creado exitosamente.\n\nPresiona enter para continuar.");
+		entrada.nextLine();
 	}
 
-	public String toString () {
-		return "Registrarse";
-	}
+	public String toString(){ return "Registrarse"; }
 }

@@ -4,56 +4,54 @@ import java.io.BufferedInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class MenuDeConsola implements Serializable {
-	ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
-		add(new uiMain.menuConsola.SalirDeLaAplicacion());
-	}};
+    ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
+        add(new uiMain.menuConsola.SalirDeLaAplicacion());
+    }};
 
-	public MenuDeConsola(String[] menu) {
-		for (String opcion : menu)
-			anadirOpcion(Main.listaOpciones.get(opcion));
-	}
+    public MenuDeConsola(String[] menu) {
+        for (String opcion : menu)
+            anadirOpcion(Main.listaOpciones.get(opcion));
+    }
 
-	public void anadirOpcion(OpcionDeMenu opcion) {
-		opciones.add(opcion);
-	}
+    public void anadirOpcion(OpcionDeMenu opcion) { opciones.add(opcion); }
 
-	// Se muestra el conjunto de opciones asociadas al correspondiente menu de
-	// consola y se recibe entrada por parte del usuario (I/O)
-	void lanzarMenu() {
-		String opcion = null,
-				margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-		Scanner input = new Scanner(new BufferedInputStream(System.in));
-		OpcionDeMenu[] arregloOpciones = opciones.toArray(new OpcionDeMenu[opciones.size()]);
+    /* Se muestra el conjunto de opciones asociadas al correspondiente menu de
+     * consola y se recibe entrada por parte del usuario (I/O) */
+    void lanzarMenu() {
+        String margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        Scanner entrada = new Scanner(new BufferedInputStream(System.in));
+        OpcionDeMenu[] arregloOpciones = opciones.toArray(new OpcionDeMenu[opciones.size()]);
+        int numero = 0;
 
+        do {
+            System.out.format(margen + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario", "OPCIÓN",
+                    "NÚMERO");
 
-		do {
-			System.out.format(margen + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario", "OPCIÓN", "NÚMERO");
-			for (byte i = -1; ++i < arregloOpciones.length;)
-				System.out.format("%-25s%d%n", arregloOpciones[i], i + 1);
-			if (opcion != null)
-				System.out
-						.print("\nLa entrada \"" + opcion + "\" no corresponde a ningún número de opción válido.");
+            // Temporal
+            Main.mostrarUsuarios();
 
-			System.out.print("\nIngrese el número de la opción a ejecutar: ");
-		} while (!Pattern.compile("\\d+").matcher(opcion = input.next()).matches() || Integer.parseInt(opcion) < 1
-				|| Integer.parseInt(opcion) > arregloOpciones.length);
+            for (byte i = -1; ++i < arregloOpciones.length; )
+                System.out.format("%-25s%d%n", arregloOpciones[i], i + 1);
 
-		arregloOpciones[Integer.parseInt(opcion) - 1].ejecutar();
+            if (numero != 0)
+                System.out.print("\n\"" + numero + "\" no corresponde a ningún número de opción válido.");
 
-	}
+            System.out.print("\nIngrese el número de la opción a ejecutar: ");
+        } while (!entrada.hasNextInt() || (numero = entrada.nextInt()) < 1 || numero > arregloOpciones.length);
 
-	// Temporal
-	@Override
-	public String toString() {
-		String text = "\"";
-		for (OpcionDeMenu opcion : opciones) {
-			text += opcion.getClass().getSimpleName() + " ";
-		}
-		text += "\"";
-		return text;
-	}
+        arregloOpciones[numero - 1].ejecutar();
+
+    }
+
+    // Temporal
+    @Override
+    public String toString() {
+        String text = "";
+        for (OpcionDeMenu opcion : opciones)
+            text += opcion.getClass().getSimpleName() + " ";
+        return text;
+    }
 
 }

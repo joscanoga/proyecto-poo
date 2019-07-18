@@ -8,7 +8,5 @@ public class VerTodasLasOpciones implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Ver todas las opciones";
-	}
+	public String toString(){ return "Ver todas las opciones"; }
 }

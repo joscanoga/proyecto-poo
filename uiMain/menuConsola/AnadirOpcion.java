@@ -8,7 +8,5 @@ public class AnadirOpcion implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Añadir opción";
-	}
+	public String toString(){ return "Añadir opción"; }
 }

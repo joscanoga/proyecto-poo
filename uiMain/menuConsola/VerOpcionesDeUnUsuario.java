@@ -8,7 +8,5 @@ public class VerOpcionesDeUnUsuario implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Ver opciones de un usuario";
-	}
+	public String toString(){ return "Ver opciones de un usuario"; }
 }

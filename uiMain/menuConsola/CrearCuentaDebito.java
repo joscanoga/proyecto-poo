@@ -8,7 +8,5 @@ public class CrearCuentaDebito implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Crear cuenta dédito";
-	}
+	public String toString(){ return "Crear cuenta dédito"; }
 }

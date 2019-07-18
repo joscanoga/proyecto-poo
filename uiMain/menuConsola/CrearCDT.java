@@ -8,7 +8,5 @@ public class CrearCDT implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Crear CDT";
-	}
+	public String toString(){ return "Crear CDT"; }
 }

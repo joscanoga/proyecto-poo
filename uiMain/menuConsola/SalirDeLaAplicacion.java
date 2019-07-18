@@ -16,8 +16,6 @@ public class SalirDeLaAplicacion implements OpcionDeMenu {
 		}
 	}
 
-	public String toString() {
-		return "Salir de la aplicación";
-	}
+	public String toString(){ return "Salir de la aplicación"; }
 
 }

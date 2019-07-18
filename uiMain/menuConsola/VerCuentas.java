@@ -8,7 +8,5 @@ public class VerCuentas implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Ver cuentas";
-	}
+	public String toString(){ return "Ver cuentas"; }
 }

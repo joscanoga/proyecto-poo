@@ -36,47 +36,29 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
         this.nombre = nombre;
 
-        if (esAdmin)
-            menu = menuDefectoAdmin;
-        else
-            menu = menuDefectoRegistrado;
+        if (esAdmin) menu = menuDefectoAdmin;
+        else menu = menuDefectoRegistrado;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public MenuDeConsola getMenu() {
-        return menu;
-    }
+    public MenuDeConsola getMenu() { return menu; }
 
-    public boolean isEsAdmin() {
-        return esAdmin;
-    }
+    public boolean isEsAdmin() { return esAdmin; }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+    public String getNombreUsuario() { return nombreUsuario; }
 
-    public String getContrasena() {
-        return contrasena;
-    }
+    public String getContrasena() { return contrasena; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
-    public static int getContador() {
-        return contador;
-    }
+    public static int getContador() { return contador; }
 
-    public ArrayList<Cuenta> getCuentas() {
-        return cuentas;
-    }
+    public ArrayList<Cuenta> getCuentas() { return cuentas; }
 
-    public static void setContador(int cont) {
-        contador = cont;
-    }
+    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
+
+    public static void setContador(int cont) { contador = cont; }
 
     // Temporal
     @Override

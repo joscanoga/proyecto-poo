@@ -8,7 +8,5 @@ public class ManejarCuenta implements OpcionDeMenu{
 		
 	}
 
-	public String toString () {
-		return "Manejar cuenta";
-	}
+	public String toString(){ return "Manejar cuenta"; }
 }
