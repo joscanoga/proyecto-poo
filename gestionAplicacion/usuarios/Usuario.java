@@ -64,7 +64,7 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario [id=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario="
                 + nombreUsuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", contador=" + contador
-                + ", cuentas =" + cuentas + ", menu=" + menu + "]";
+                + ", cuentas=" + cuentas + ", menu=" + menu + "]";
     }
 
     public void anadirCuenta(Cuenta cuenta) {

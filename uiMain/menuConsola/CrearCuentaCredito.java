@@ -21,12 +21,10 @@ public class CrearCuentaCredito implements OpcionDeMenu{
 
 		if (tieneCuentaCredito) {
 			System.out.print(margen + "Ya tienes una cuenta crédito, no es posible crear más.\n\nPresiona Enter para" +
-					" " +
-					"continuar.");
+                    " continuar.");
 		} else if (!tieneCuentaDebito) {
 			System.out.print(margen + "Debes tener una cuenta débito para poder crear una cuenta crédito." +
-					".\n\nPresiona Enter para " +
-					"continuar.");
+                    "\n\nPresiona Enter para continuar.");
 		} else {
 			Main.usuario.anadirCuenta(new CuentaCredito(Main.usuario));
 			System.out.print(margen + "Cuenta crédito creada exitosamente.\n\nPresiona Enter para " +

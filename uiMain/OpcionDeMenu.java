@@ -1,8 +1,8 @@
 package uiMain;
 
+import java.io.BufferedInputStream;
 import java.io.Serializable;
 import java.util.Scanner;
-import java.io.BufferedInputStream;
 
 public interface OpcionDeMenu extends Serializable {
     Scanner entrada = new Scanner(new BufferedInputStream(System.in));
@@ -17,5 +17,9 @@ public interface OpcionDeMenu extends Serializable {
     default void esperarEnter() {
         entrada.nextLine();
         entrada.nextLine();
+    }
+
+    default String quitarZeroDecimal(float numero) {
+        return (float)(int)numero == numero ? String.valueOf((int)numero) : "" + numero;
     }
 }
