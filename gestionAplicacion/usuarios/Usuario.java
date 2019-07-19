@@ -1,8 +1,7 @@
 package gestionAplicacion.usuarios;
 
 import gestionAplicacion.cuentas.Cuenta;
-import gestionAplicacion.cuentas.CuentaDebito;
-import uiMain.*;
+import uiMain.MenuDeConsola;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -68,5 +67,8 @@ public class Usuario implements Serializable {
                 + ", cuentas =" + cuentas + ", menu=" + menu + "]";
     }
 
-    public void anadirCuenta(CuentaDebito cuentaDebito) { System.out.println(cuentas); cuentas.add(cuentaDebito); }
+    public void anadirCuenta(Cuenta cuenta) {
+        System.out.println(cuentas);
+        cuentas.add(cuenta);
+    }
 }

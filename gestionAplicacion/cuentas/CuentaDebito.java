@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class CuentaDebito extends Cuenta {
     private float saldo;
-    private ArrayList<Debito> debitos;
-    private ArrayList<Cheque> cheques;
+    private ArrayList<Debito> debitos = new ArrayList<>();
+    private ArrayList<Cheque> cheques = new ArrayList<>();
 
     public CuentaDebito(Usuario titular) { super(titular); }
 
@@ -17,13 +17,6 @@ public class CuentaDebito extends Cuenta {
 
     public ArrayList<Debito> getDebitos() { return debitos; }
 
-    public void retirar(float valor) {
-        if (saldo - valor >= 0 && valor >= 0) {
-            saldo -= valor;
-            //se podria implementar un array par guardar los retiros o se podria manejar  como un debito?
-        } else {
-            System.out.println("valor incorrecto");
-        }
-    }
+    public void retirar(float valor) { saldo -= valor; }
 
 }

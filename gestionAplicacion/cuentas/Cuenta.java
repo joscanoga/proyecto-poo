@@ -21,6 +21,6 @@ public abstract class Cuenta implements Serializable {
 	public String toString() {
 		if (this instanceof CuentaDebito) return "CuentaDebito";
 		else if (this instanceof CDT) return "CDT";
-		else return "CuentaCreadito";
+        else return "CuentaCredito";
 	}
 }
