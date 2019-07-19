@@ -1,26 +1,26 @@
+
 package gestionAplicacion.cuentas;
 
 import gestionAplicacion.usuarios.Usuario;
 
-import java.io.Serializable;
-
-public abstract class Cuenta implements Serializable {
-	protected final int id;
-	protected Usuario titular;
-	protected static int numeroCuentas;
-
-
+public abstract class Cuenta {
+	private int id;
+	private Usuario titular;
+	static int numeroCuentas;
 	
-	protected Cuenta(Usuario titular) {
-		id = numeroCuentas++;
-		this.titular = titular;
+	protected Usuario getTitular() {
+		return(titular);
 	}
-
-
-	// Temporal
-	public String toString() {
-		if (this instanceof CuentaDebito) return "CuentaDebito";
-		else if (this instanceof CDT) return "CDT";
-		else return "CuentaCreadito";
+	
+	
+	protected Cuenta(Usuario titu) {
+		numeroCuentas++;
+		id=numeroCuentas;
+		titular=titu;
 	}
+	public int getNumeroCuentas() {return numeroCuentas;}
+	public int getId() {return(id);}
+	
+	
+	
 }
