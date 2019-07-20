@@ -55,5 +55,9 @@ public class CuentaDebito extends Cuenta {
             }
         }
     }
+    public void abonarCredito(Credito c,Float valor) {
+    	this.retirar(valor);
+    	c.pagarParcial(valor);}
+    
 
 }

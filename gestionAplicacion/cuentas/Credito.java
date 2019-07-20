@@ -23,10 +23,10 @@ private CuentaCredito cuentaAsociada;
 		float cuo=monto/cuotas;
 		if (c.getCupo()>=monto&&monto>0) {
 			monto=m;
-			for (int i=1;i<= cu;i++) {intereses+=cuentaAsociada.getIntereses()*(monto-(i-1)*cuo);}
+			for (int i=1;i<= cu;i++) {intereses+=(cuentaAsociada.getIntereses()/100)*(monto-(i-1)*cuo);}
 			montoPendiente=monto+intereses;
 		 valorCuota=montoPendiente/cuotas;
-	//public void debitarCuota() }	
+		 cuentaAsociada.mermarCupo(montoPendiente);
 	
 		
 	}
@@ -35,10 +35,24 @@ private CuentaCredito cuentaAsociada;
 	void pagarParcial(float pago) {
 		//por aca se podrian colocar 2 0 3 funciones "interesantes"
 		montoPendiente-=pago;
+		cuentaAsociada.aumentarCupo(pago);
+		cuentaAsociada.mermarDeuda(pago);
+		if (montoPendiente<=0) {cuentaAsociada.removerCredito(this);}
+		
 	}
 	float getValorCuota() {
 		return valorCuota;
 	}
-	
-	
+	public void sancionar() {
+		float s=(cuentaAsociada.getIntereses()/100)*monto;
+		montoPendiente+=s;
+		cuentaAsociada.mermarCupo(100000+s);
+		cuentaAsociada.aumentarDeuda(s);
+	}
+	public String toString() {
+		return("id: "+id +"monto: "+monto+"pendiente : "+montoPendiente);
+	}
 }
+	
+	
+
