@@ -12,7 +12,6 @@ public class Usuario implements Serializable {
     private boolean esAdmin;
     private String nombreUsuario, contrasena, nombre;
     private static int contador;
-    private int contadorSerial;
     private ArrayList<Cuenta> cuentas = new ArrayList<>();
 
     final private MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion"}),
@@ -23,9 +22,9 @@ public class Usuario implements Serializable {
 
     // Los invitados serán los usuarios que se crean con el constructor por defecto
     public Usuario() {
-        id = ++contador;
+        id = 0;
         menu = menuDefectoInvitado;
-        nombre = "Invitado_" + id;
+        nombre = "Invitado";
     }
 
     // Constructor para usuarios de tipo administrador y registrado
@@ -54,21 +53,17 @@ public class Usuario implements Serializable {
 
     public static int getContador() { return contador; }
 
-    public int getContadorSerial() { return contadorSerial; }
-
     public ArrayList<Cuenta> getCuentas() { return cuentas; }
 
     public void setContrasena(String contrasena) { this.contrasena = contrasena; }
 
     public static void setContador(int cont) { contador = cont; }
 
-    public void setContadorSerial(int contadorSerial) { this.contadorSerial = contadorSerial; }
-
     // Temporal
     @Override
     public String toString() {
         return "\nid=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena +
-                ", nombre=" + nombre + ", contadorSerial=" + contadorSerial + ", contador=" + contador + ", cuentas " +
+                ", nombre=" + nombre + ", contador=" + contador + ", cuentas " +
                 "=" + cuentas;
     }
 

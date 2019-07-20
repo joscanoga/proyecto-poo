@@ -1,5 +1,6 @@
 package BaseDatos;
 
+import gestionAplicacion.cuentas.Cuenta;
 import gestionAplicacion.usuarios.Usuario;
 import java.io.*;
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class Serializador {
 			 * finalizar la última sesión. Este campo se trata por diferente a los demás ya que el flujo de objetos no
 			 * es consistente en el valor de campos estáticos. Una vez leído dicho dato, se le reasigna al
 			 * correspondiente campo estático "contador" de Usuario para que reanude el conteo donde lo dejó. */
-			// Usuario.setContador(in.readInt());
+			Usuario.setContador(in.readInt());
+			Cuenta.setContador(in.readInt());
 
 			while (true)
 				usuarios.add((Usuario) in.readObject());
@@ -30,8 +32,6 @@ public class Serializador {
 			if (in != null)
 				in.close();
 		}
-
-		if (!usuarios.isEmpty()) Usuario.setContador(usuarios.get(1).getContadorSerial());
 
 		tablaUsuarios = new HashMap<>(usuarios.size());
 
@@ -51,12 +51,11 @@ public class Serializador {
 			/* Se envía manualmente el valor del campo estático "contador" de Usuario instantes antes del fin de la
 			 * ejecución de la aplicación, esto para que sea leído de igual forma, manualmente, por la próxima sesión.
 			 */
-			// out.writeInt(Usuario.getContador());
+			out.writeInt(Usuario.getContador());
+			out.writeInt(Cuenta.getContador());
 
-			for (Map.Entry<String, Usuario> registro : usuarios.entrySet()) {
-                registro.getValue().setContadorSerial(registro.getValue().getContador());
-			    out.writeObject(registro.getValue());
-            }
+			for (Map.Entry<String, Usuario> registro : usuarios.entrySet())
+				out.writeObject(registro.getValue());
 		} finally {
 			if (out != null)
 				out.close();

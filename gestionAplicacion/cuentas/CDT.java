@@ -3,15 +3,15 @@ package gestionAplicacion.cuentas;
 import gestionAplicacion.usuarios.Usuario;
 
 public class CDT extends Cuenta {
-    private int meses;
-    private float monto;
+    private int meses, mesesInicial;
+    private float monto, montoInicial;
     private final float tasa = (float)0.5;
     private boolean activo;
 
     public CDT(Usuario titular, float monto, int meses) {
         super(titular);
-        this.meses = meses;
-        this.monto = monto;
+        mesesInicial = this.meses = meses;
+        montoInicial = this.monto = monto;
     }
 
     public int getPlazoMeses() { return meses; }
@@ -34,6 +34,10 @@ public class CDT extends Cuenta {
                 break;
             }
         }
+    }
+
+    public String toString() {
+        return id + ",CDT," + montoInicial + "," + monto + "," + tasa + "," + mesesInicial + "," + meses;
     }
 
 }

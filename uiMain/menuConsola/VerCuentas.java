@@ -4,15 +4,49 @@ import gestionAplicacion.cuentas.Cuenta;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
 
-public class VerCuentas implements OpcionDeMenu{
-	
-	public void ejecutar() {
-		System.out.format(margen + "%-20s%-20s%n", "NÚMERO DE CUENTA", "TIPO DE CUENTA");
-		for (Cuenta cuenta : Main.usuario.getCuentas()) cuenta.imprimir();
+import java.util.ArrayList;
 
-		System.out.print("\nPresiona Enter para continuar.");
-		entrada.nextLine();
-	}
+public class VerCuentas implements OpcionDeMenu {
 
-	public String toString(){ return "Ver cuentas"; }
+    public void ejecutar() {
+        if (Main.usuario.getCuentas().isEmpty())
+            System.out.println(margen + "No tienes cuentas para mostrar.");
+        else {
+            // textoCuentas = {textoCuentasDébito, textoCuentasCrédito, textoCDTs}
+            String[] infoCuenta, textoCuentas = {null, null, null};
+
+            for (Cuenta cuenta : Main.usuario.getCuentas()) {
+                infoCuenta = cuenta.toString().split(",");
+                if (infoCuenta[1].equals("Cuenta débito"))
+                    textoCuentas[0] = ",,SALDO,NÚMERO DE CHEQUES,NÚMERO DE DÉBITOS-" + cuenta + "-";
+                else if (infoCuenta[1].equals("CDT")) {
+                    if (textoCuentas[2] == null)
+                        textoCuentas[2] = ",,MONTO INICIAL,MONTO ACTUAL,TASA DE INCREMENTO,PLAZO INICIAL," +
+                                "MESES TRANSCURRIDOS-";
+                    textoCuentas[2] += cuenta + "-";
+                } else textoCuentas[1] = ",,DEUDA TOTAL,CUPO CREDITICIO,INTERÉS,NÚMERO DE CRÉDITOS-" + cuenta +
+                        "-";
+            }
+
+            System.out.format(margen + "%-20s%-20s%n%n", "NÚMERO DE CUENTA", "TIPO DE CUENTA");
+            for (String textoCuenta : textoCuentas) {
+
+                for (String cuenta : textoCuenta.split("-")) {
+                    if (cuenta.length() == 1) continue;
+
+                    for (String campo : cuenta.split(","))  System.out.format("%-20s", campo);
+                    System.out.println();
+
+                }
+
+                System.out.println();
+            }
+        }
+
+        System.out.print("\nPresiona Enter para continuar.");
+        entrada.nextLine();
+    }
+
+    public String toString() { return "Ver cuentas"; }
+
 }

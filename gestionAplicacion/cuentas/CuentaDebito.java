@@ -55,9 +55,15 @@ public class CuentaDebito extends Cuenta {
             }
         }
     }
-    public void abonarCredito(Credito c,Float valor) {
-    	this.retirar(valor);
-    	c.pagarParcial(valor);}
-    
+
+    public void abonarCredito(Credito c, Float valor) {
+        this.retirar(valor);
+        c.pagarParcial(valor);
+    }
+
+    public String toString() {
+        return id + ",Cuenta débito," + saldo + "," + cheques.size() + "," + debitos.size();
+    }
+
 
 }

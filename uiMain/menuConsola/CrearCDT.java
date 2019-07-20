@@ -1,7 +1,6 @@
 package uiMain.menuConsola;
 
 import gestionAplicacion.cuentas.CDT;
-import gestionAplicacion.cuentas.Cuenta;
 import gestionAplicacion.cuentas.CuentaDebito;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
@@ -59,6 +58,7 @@ public class CrearCDT implements OpcionDeMenu {
 
                     break;
                 }
+                cuentaDebito.retirar(monto);
                 Main.usuario.anadirCuenta(new CDT(Main.usuario, monto, meses));
                 System.out.print(margen + "Cuenta crédito creada exitosamente.\n\nPresiona Enter para " +
                         "continuar.");

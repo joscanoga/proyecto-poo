@@ -21,7 +21,7 @@ public class IniciarSesion implements OpcionDeMenu {
             System.out.println(margen + "FORMULARIO DE INICIO DE SESIÓN.\n");
             if (contrasenaIntento != null)
                 System.out.println("Contraseña incorrecta.\n");
-            System.out.format("%-20S: " + nombreUsuario + "%n%-20s: ", "Nombre de usuario", "Contraseña");
+            System.out.format("%-20s: " + nombreUsuario + "%n%-20s: ", "Nombre de usuario", "Contraseña");
         } while (!contrasena.equals(contrasenaIntento = entrada.next()));
 
         Main.usuario = Main.usuarios.get(nombreUsuario);
