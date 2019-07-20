@@ -14,16 +14,7 @@ public class CrearCDT implements OpcionDeMenu {
         int meses = 0;
         String mensajeError = null;
 
-        if (Main.usuario.getCuentas() != null) {
-            for (Cuenta cuenta : Main.usuario.getCuentas()) {
-                if (cuenta instanceof CuentaDebito) {
-                    cuentaDebito = (CuentaDebito)cuenta;
-                    break;
-                }
-            }
-        }
-
-        if (cuentaDebito == null) {
+        if ((cuentaDebito = (CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())) == null) {
             System.out.print(margen + "Debes tener una cuenta débito para poder crear un CDT." +
                     "\n\nPresiona Enter para continuar.");
         } else {

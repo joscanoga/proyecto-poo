@@ -24,7 +24,6 @@ public class Debito implements Serializable {
         id = numeroDebitos;
         cuentaAsociada = ca;
         monto = m;
-
     }
 
 }

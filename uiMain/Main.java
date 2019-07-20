@@ -40,5 +40,8 @@ public class Main {
     public static final void definirInvitado() { usuario = new Usuario(); }
 
     // Temporal
-    public static final void mostrarUsuarios() { for (Usuario user : usuarios.values()) System.out.println(user); }
+    public static final void mostrarUsuarios() {
+        for (Usuario user : usuarios.values()) System.out.println(user);
+        System.out.println();
+    }
 }

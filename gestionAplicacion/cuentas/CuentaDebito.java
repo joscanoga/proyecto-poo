@@ -54,7 +54,6 @@ public class CuentaDebito extends Cuenta {
                 break;
             }
         }
-
     }
 
 }

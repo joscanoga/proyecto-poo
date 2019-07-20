@@ -8,20 +8,10 @@ import uiMain.OpcionDeMenu;
 public class CrearCuentaDebito implements OpcionDeMenu {
 
     public void ejecutar() {
-        boolean tiene = false;
-        if (Main.usuario.getCuentas() != null) {
-            for (Cuenta cuenta : Main.usuario.getCuentas()) {
-                if (cuenta instanceof CuentaDebito) {
-                    tiene = true;
-                    break;
-                }
-            }
-        }
-
-        if (!tiene) {
+        if (buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas()) == null) {
             Main.usuario.anadirCuenta(new CuentaDebito(Main.usuario));
             System.out.print(margen + "Cuenta débito creada exitosamente.\n\nPresiona Enter para continuar.");
-        } else System.out.print(margen + "Ya tienes una cuenta débito, no es crear más.\n\nPresiona Enter " +
+        } else System.out.print(margen + "Ya tienes una cuenta débito, no es posible crear más.\n\nPresiona Enter " +
                 "para continuar.");
 
         entrada.nextLine();

@@ -8,12 +8,11 @@ public class CuentaCredito extends Cuenta {
     private float deuda;
     private float cupo = 1000000;
     private static float interes = (float)2.5;
+    private ArrayList<Credito> creditos = new ArrayList<>();
 
     public CuentaCredito(Usuario titular) {
         super(titular);
     }
-
-    private ArrayList<Credito> creditos;
 
     public float getCupo() { return cupo; }
 

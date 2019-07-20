@@ -7,11 +7,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Usuario implements Serializable {
-    final private int id;
+    private final int id;
     private MenuDeConsola menu;
     private boolean esAdmin;
     private String nombreUsuario, contrasena, nombre;
-    static private int contador;
+    private static int contador;
+    private int contadorSerial;
     private ArrayList<Cuenta> cuentas = new ArrayList<>();
 
     final private MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion"}),
@@ -22,14 +23,14 @@ public class Usuario implements Serializable {
 
     // Los invitados serán los usuarios que se crean con el constructor por defecto
     public Usuario() {
-        id = contador++;
+        id = ++contador;
         menu = menuDefectoInvitado;
         nombre = "Invitado_" + id;
     }
 
     // Constructor para usuarios de tipo administrador y registrado
     public Usuario(boolean esAdmin, String nombreUsuario, String contrasena, String nombre) {
-        id = contador++;
+        id = ++contador;
         this.esAdmin = esAdmin;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
@@ -53,18 +54,22 @@ public class Usuario implements Serializable {
 
     public static int getContador() { return contador; }
 
+    public int getContadorSerial() { return contadorSerial; }
+
     public ArrayList<Cuenta> getCuentas() { return cuentas; }
 
     public void setContrasena(String contrasena) { this.contrasena = contrasena; }
 
     public static void setContador(int cont) { contador = cont; }
 
+    public void setContadorSerial(int contadorSerial) { this.contadorSerial = contadorSerial; }
+
     // Temporal
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario="
-                + nombreUsuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", contador=" + contador
-                + ", cuentas=" + cuentas + ", menu=" + menu + "]";
+        return "\nid=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena +
+                ", nombre=" + nombre + ", contadorSerial=" + contadorSerial + ", contador=" + contador + ", cuentas " +
+                "=" + cuentas;
     }
 
     public void anadirCuenta(Cuenta cuenta) {

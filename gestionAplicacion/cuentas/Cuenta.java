@@ -15,10 +15,11 @@ public abstract class Cuenta implements Serializable {
     }
 
     // Temporal
-    public String toString() {
-        if (this instanceof CuentaDebito) return "CuentaDebito";
-        else if (this instanceof CDT) return "CDT";
-        else return "CuentaCreadito";
+    public String toString() { return this instanceof CuentaDebito ? "CDe" : (this instanceof CDT ? "CDT" : "CCre"); }
+
+    public void imprimir() {
+        String tipo = this instanceof CuentaDebito ? "CDe" : (this instanceof CDT ? "CDT" : "CCre");
+        System.out.format("%-20s%-20s%n", id, tipo);
     }
 
     public int getId() { return id; }

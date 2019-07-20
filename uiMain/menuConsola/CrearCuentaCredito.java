@@ -9,20 +9,10 @@ import uiMain.OpcionDeMenu;
 public class CrearCuentaCredito implements OpcionDeMenu{
 
 	public void ejecutar() {
-		boolean tieneCuentaDebito = false, tieneCuentaCredito = false;
-		if (Main.usuario.getCuentas() != null) {
-			for (Cuenta cuenta : Main.usuario.getCuentas()) {
-				if (cuenta instanceof CuentaCredito) {
-					tieneCuentaCredito = true;
-					break;
-				} else if (cuenta instanceof CuentaDebito) tieneCuentaDebito = true;
-			}
-		}
-
-		if (tieneCuentaCredito) {
+		if (buscarObjetoEn(CuentaCredito.class, Main.usuario.getCuentas()) != null) {
 			System.out.print(margen + "Ya tienes una cuenta crédito, no es posible crear más.\n\nPresiona Enter para" +
                     " continuar.");
-		} else if (!tieneCuentaDebito) {
+		} else if (buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas()) == null) {
 			System.out.print(margen + "Debes tener una cuenta débito para poder crear una cuenta crédito." +
                     "\n\nPresiona Enter para continuar.");
 		} else {

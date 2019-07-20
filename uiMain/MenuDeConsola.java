@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class MenuDeConsola implements Serializable {
-    ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
+    private ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
         add(new uiMain.menuConsola.SalirDeLaAplicacion());
     }};
 
@@ -43,16 +43,6 @@ public class MenuDeConsola implements Serializable {
                 || Integer.parseInt(opcion) > arregloOpciones.length);
 
         arregloOpciones[Integer.parseInt(opcion) - 1].ejecutar();
-    }
-
-    // Temporal
-    @Override
-    public String toString() {
-        String text = "";
-        for (OpcionDeMenu opcion : opciones)
-            text += opcion.getClass().getSimpleName() + ", ";
-        text = text.substring(0, text.length() - 2);
-        return text;
     }
 
 }
