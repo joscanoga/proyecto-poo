@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class Main {
 
-    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<>() {{
+    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<String, OpcionDeMenu>() {{
         put("AnadirOpcion", new AnadirOpcion());
         put("CambiarContrasena", new CambiarContrasena());
         put("CerrarSesion", new CerrarSesion());
@@ -24,6 +24,7 @@ public class Main {
         put("VerCuentas", new VerCuentas());
         put("VerOpcionesDeUnUsuario", new VerOpcionesDeUnUsuario());
         put("VerTodasLasOpciones", new VerTodasLasOpciones());
+        put("Contactenos", new Contactenos());
     }};
     public static Usuario usuario;
     public static HashMap<String, Usuario> usuarios;
@@ -32,6 +33,8 @@ public class Main {
         // Todos los usuarios y administradores registrados en la base de datos
         usuarios = Serializador.cargar();
         definirInvitado();
+        
+            usuario.getMenu().encabezado();
 
         for (;;)
             usuario.getMenu().lanzarMenu();

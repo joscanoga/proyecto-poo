@@ -17,11 +17,21 @@ public class MenuDeConsola implements Serializable {
     }
 
     public void anadirOpcion(OpcionDeMenu opcion) { opciones.add(opcion); }
+    
+    void encabezado() {
+    	String titulo = "<<<<<<<<<<<<<<<<<<<<<<<<<<<< Bienvenido a Green Bank >>>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n" + 
+        	    "     $                                                                    $" + "\n"
+        	    + "  $  $  $                                                              $  $  $" + "\n"
+        	    + "   $ $ $            Un banco al alcance de sus posibilidades            $ $ $" + "\n"
+        	    + "     $                                                                    $" + "\n"
+        	    + "     $____________________________________________________________________$" + "\n\n\n\"";
+    	System.out.println(titulo);
+    }
 
     /* Se muestra el conjunto de opciones asociadas al correspondiente menu de
      * consola y se recibe entrada por parte del usuario (I/O) */
     void lanzarMenu() {
-        String opcion = null, margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        String opcion = null, margen = "\n\n\n";
         Scanner input = new Scanner(new BufferedInputStream(System.in));
         OpcionDeMenu[] arregloOpciones = opciones.toArray(new OpcionDeMenu[opciones.size()]);
 
