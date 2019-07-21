@@ -1,40 +1,32 @@
 package uiMain.menuConsola;
 
-import uiMain.*;
+import uiMain.Main;
+import uiMain.OpcionDeMenu;
 
 public class CambiarContrasena extends OpcionDeMenu {
 	
 	public void ejecutar() {
-		String contrasenaActual = null, contrasena = null, mensajeError = null;
+        String contraVieja = null, contrasena;
 
-		do {
-			System.out.println(margen + "CAMBIO DE CONTRASEÑA.");
-
-			if(mensajeError != null) System.out.println(mensajeError);
-
-			System.out.format("%n%-20s: ", "Contraseña actual");
-			if (contrasenaActual != null) System.out.println(contrasenaActual);
-			else {
-				if (!(contrasenaActual = entrada.next()).equals(Main.usuario.getContrasena())) {
-					mensajeError = "\nContraseña incorrecta.";
-					contrasenaActual = null;
-					continue;
-				}
+        while (true) {
+            System.out.print(margen + "CAMBIAR CONTRASEÑA\n\n" + (textoError != null ? textoError + "\n\n" : ""));
+            System.out.format("%-20s: " + (contraVieja != null ? contraVieja + "\n" : ""), "Contraseña actual");
+            if (contraVieja == null && !(contraVieja = entrada.next()).equals(Main.usuario.getContrasena())) {
+                textoError = "Contraseña incorrecta.";
+                contraVieja = null;
+                continue;
 			}
 
 			System.out.format("%-20s: ", "Nueva contraseña");
 			contrasena = entrada.next();
 			System.out.format("%-20s: ", "Verificar contraseña");
-			if (!contrasena.equals(entrada.next())) mensajeError = "\nLas contraseñas no coinciden.";
-			else mensajeError = null;
-
-		} while(mensajeError != null);
-
+            if (!contrasena.equals(entrada.next())) textoError = "Las contraseñas no coinciden.";
+            else break;
+        }
 		Main.usuario.setContrasena(contrasena);
 
 		System.out.print(margen + "La contraseña ha sido cambiada.\n\nPresiona Enter para continuar.");
 		esperarEnter();
-
 	}
 
 	public String toString(){ return "Cambiar contraseña"; }

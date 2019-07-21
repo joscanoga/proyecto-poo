@@ -8,7 +8,16 @@ import uiMain.OpcionDeMenu;
 public class Transferir extends OpcionDeMenu {
     public void ejecutar() {
         String textoError = null, monto = null, numCuenta;
-        CuentaDebito cuentaDestino = null;
+        CuentaDebito cuentaDestino = null,
+                cuentaDebito = (CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas());
+
+        if (cuentaDebito == null) {
+            System.out.print(margen +
+                    "Debes poseer una cuenta débito para poder transferir.\n\nPresiona Enter para continuar");
+            esperarEnter();
+            return;
+        }
+
         float valorMonto = 0,
                 saldo = ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).getSaldo();
 
@@ -53,8 +62,7 @@ public class Transferir extends OpcionDeMenu {
             break;
         }
 
-        ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).retirar(Float.parseFloat(monto));
-        cuentaDestino.consignar(Float.parseFloat(monto));
+        cuentaDebito.transferir(cuentaDestino, Float.parseFloat(monto));
 
         System.out.print(margen + "Transferencia realizado exitosamente.\n\nPresiona Enter para continuar.");
         esperarEnter();

@@ -7,6 +7,15 @@ import uiMain.OpcionDeMenu;
 public class Retirar extends OpcionDeMenu {
     public void ejecutar() {
         String textoError = null, monto;
+        CuentaDebito cuentaDebito = (CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas());
+
+        if (cuentaDebito == null) {
+            System.out.print(margen +
+                    "Debes poseer una cuenta débito para poder retirar.\n\nPresiona Enter para continuar");
+            esperarEnter();
+            return;
+        }
+
         float valorMonto,
                 saldo = ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).getSaldo();
 
@@ -28,7 +37,7 @@ public class Retirar extends OpcionDeMenu {
             break;
         }
 
-        ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).retirar(Float.parseFloat(monto));
+        cuentaDebito.retirar(Float.parseFloat(monto));
 
         System.out.print(margen + "Retiro realizado exitosamente.\n\nPresiona Enter para continuar");
         esperarEnter();

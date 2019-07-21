@@ -7,6 +7,14 @@ import uiMain.OpcionDeMenu;
 public class Consignar extends OpcionDeMenu {
     public void ejecutar() {
         String textoError = null, monto;
+        CuentaDebito cuentaDebito = (CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas());
+
+        if (cuentaDebito == null) {
+            System.out.print(margen +
+                    "Debes poseer una cuenta débito para poder consignarle.\n\nPresiona Enter para continuar");
+            esperarEnter();
+            return;
+        }
 
         while (true) {
             System.out.println(margen + "FORMULARIO DE CONSIGNACIÓN\n");
@@ -24,7 +32,7 @@ public class Consignar extends OpcionDeMenu {
             break;
         }
 
-        ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).consignar(Float.parseFloat(monto));
+        cuentaDebito.consignar(Float.parseFloat(monto));
 
         System.out.print(margen + "Consignación realizada exitosamente.\n\nPresiona Enter para continuar");
         esperarEnter();

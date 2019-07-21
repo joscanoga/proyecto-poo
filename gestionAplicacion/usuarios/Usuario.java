@@ -17,10 +17,10 @@ public class Usuario implements Serializable {
 
     private final MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion",
             "Contactenos"}),
-            menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
-                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"}),
             menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
-                    "CrearCuentaCredito", "CrearCuentaDebito", "VerCuentas"});
+                    "CrearCuentaCredito", "CrearCuentaDebito", "VerCuentas"}),
+            menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
+                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"});
 
     // Los invitados serán los usuarios que se crean con el constructor por defecto
     public Usuario() {

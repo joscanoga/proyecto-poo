@@ -3,6 +3,7 @@ package uiMain;
 import java.io.Serializable;
 
 public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
+    protected String textoError = null;
 
     protected abstract void ejecutar();
 
