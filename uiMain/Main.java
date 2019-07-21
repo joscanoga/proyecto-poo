@@ -9,10 +9,11 @@ import java.util.HashMap;
 
 public class Main {
 
-    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<>() {{
+    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<String, OpcionDeMenu>() {{
         put("AnadirOpcion", new AnadirOpcion());
         put("CambiarContrasena", new CambiarContrasena());
         put("CerrarSesion", new CerrarSesion());
+        put("Contactenos", new Contactenos());
         put("CrearCDT", new CrearCDT());
         put("CrearCuentaCredito", new CrearCuentaCredito());
         put("CrearCuentaDebito", new CrearCuentaDebito());
@@ -38,6 +39,8 @@ public class Main {
         // Todos los usuarios y administradores registrados en la base de datos
         usuarios = Serializador.cargar();
         definirInvitado();
+        
+            usuario.getMenu().encabezado();
 
         for (;;)
             usuario.getMenu().lanzarMenu();
