@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
     private static int contador;
     private ArrayList<Cuenta> cuentas = new ArrayList<>();
 
-    final private MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion"}),
+    final private MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion", "Contactenos"}),
             menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
                     "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"}),
             menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
