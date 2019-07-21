@@ -11,7 +11,9 @@ public class MenuDeConsola implements Serializable {
         add(new uiMain.menuConsola.SalirDeLaAplicacion());
     }};
 
-    public MenuDeConsola(String[] menu) {
+    public MenuDeConsola(String[] menu) { anadirOpciones(menu); }
+
+    public final void anadirOpciones(String[] menu) {
         for (String opcion : menu)
             anadirOpcion(Main.listaOpciones.get(opcion));
     }

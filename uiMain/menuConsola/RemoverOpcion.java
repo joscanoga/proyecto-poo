@@ -2,7 +2,7 @@ package uiMain.menuConsola;
 
 import uiMain.OpcionDeMenu;
 
-public class RemoverOpcion implements OpcionDeMenu{
+public class RemoverOpcion extends OpcionDeMenu {
 	
 	public void ejecutar() {
 		

@@ -1,6 +1,8 @@
 package gestionAplicacion.cuentas;
 
 import gestionAplicacion.usuarios.Usuario;
+import uiMain.RecursosVarios;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +13,14 @@ public class CuentaDebito extends Cuenta {
     private ArrayList<Debito> debitos = new ArrayList<>();
     private ArrayList<Cheque> cheques = new ArrayList<>();
 
-    public CuentaDebito(Usuario titular) { super(titular); }
+    private static final String[] menuDefectoCuentasDebito = new String[]{"Consignar", "Retirar", "Transferir",
+            "DiligenciarCheque", "CrearDebito", "DescartarDebito"};
+
+    public CuentaDebito(Usuario titular) {
+        super(titular);
+        titular.getMenu().anadirOpciones(menuDefectoCuentasDebito);
+
+    }
 
     public float getSaldo() { return saldo; }
 

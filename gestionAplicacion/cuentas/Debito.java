@@ -3,27 +3,25 @@ package gestionAplicacion.cuentas;
 import java.io.Serializable;
 
 public class Debito implements Serializable {
-    final private int id;
-    final private CuentaDebito cuentaAsociada;
-    final private float monto;
-    private static int numeroDebitos;
+    private final int id;
+    private final CuentaDebito cuentaAsociada;
+    private final float monto;
+    private static int contador;
 
-
-    public int getId() {return id;}
-
-    public CuentaDebito getCuentaAsociada() {return cuentaAsociada;}
-
-    public float getMonto() {return monto;}
-
-    public int getNumeroDebitos() {return numeroDebitos;}
-
-    public void debitar() {cuentaAsociada.retirar(monto);}
-
-    Debito(CuentaDebito ca, float m) {
-        numeroDebitos++;
-        id = numeroDebitos;
-        cuentaAsociada = ca;
-        monto = m;
+    Debito(CuentaDebito cuenta, float monto) {
+        id = ++contador;
+        cuentaAsociada = cuenta;
+        this.monto = monto;
     }
+
+    public int getId() { return id; }
+
+    public CuentaDebito getCuentaAsociada() { return cuentaAsociada; }
+
+    public float getMonto() { return monto; }
+
+    public static int getNumeroDebitos() { return contador; }
+
+    public void debitar() { cuentaAsociada.retirar(monto); }
 
 }

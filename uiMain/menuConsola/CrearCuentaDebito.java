@@ -5,7 +5,7 @@ import gestionAplicacion.cuentas.CuentaDebito;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
 
-public class CrearCuentaDebito implements OpcionDeMenu {
+public class CrearCuentaDebito extends OpcionDeMenu {
 
     public void ejecutar() {
         if (buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas()) == null) {

@@ -24,6 +24,12 @@ public class Main {
         put("VerCuentas", new VerCuentas());
         put("VerOpcionesDeUnUsuario", new VerOpcionesDeUnUsuario());
         put("VerTodasLasOpciones", new VerTodasLasOpciones());
+        put("Consignar", new Consignar());
+        put("Retirar", new Retirar());
+        put("Transferir", new Transferir());
+        put("DiligenciarCheque", new DiligenciarCheque());
+        put("CrearDebito", new CrearDebito());
+        put("DescartarDebito", new DescartarDebito());
     }};
     public static Usuario usuario;
     public static HashMap<String, Usuario> usuarios;

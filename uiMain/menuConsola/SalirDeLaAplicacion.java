@@ -3,7 +3,7 @@ package uiMain.menuConsola;
 import uiMain.*;
 import BaseDatos.Serializador;
 
-public class SalirDeLaAplicacion implements OpcionDeMenu {
+public class SalirDeLaAplicacion extends OpcionDeMenu {
 
 	public void ejecutar() {
 		try {

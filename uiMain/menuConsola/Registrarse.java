@@ -3,7 +3,7 @@ package uiMain.menuConsola;
 import gestionAplicacion.usuarios.Usuario;
 import uiMain.*;
 
-public class Registrarse implements OpcionDeMenu{
+public class Registrarse extends OpcionDeMenu {
 	
 	public void ejecutar() {
 		String nombreUsuario = null, contrasena = null;

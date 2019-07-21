@@ -2,7 +2,7 @@ package uiMain.menuConsola;
 
 import uiMain.*;
 
-public class CambiarContrasena implements OpcionDeMenu{
+public class CambiarContrasena extends OpcionDeMenu {
 	
 	public void ejecutar() {
 		String contrasenaActual = null, contrasena = null, mensajeError = null;

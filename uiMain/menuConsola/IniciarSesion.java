@@ -3,7 +3,7 @@ package uiMain.menuConsola;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
 
-public class IniciarSesion implements OpcionDeMenu {
+public class IniciarSesion extends OpcionDeMenu {
 
     public void ejecutar() {
         String nombreUsuario = null, contrasena, contrasenaIntento = null;

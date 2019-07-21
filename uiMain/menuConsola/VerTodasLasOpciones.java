@@ -2,7 +2,7 @@ package uiMain.menuConsola;
 
 import uiMain.OpcionDeMenu;
 
-public class VerTodasLasOpciones implements OpcionDeMenu{
+public class VerTodasLasOpciones extends OpcionDeMenu {
 	
 	public void ejecutar() {
 		

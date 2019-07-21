@@ -5,7 +5,7 @@ import gestionAplicacion.cuentas.CuentaDebito;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
 
-public class CrearCDT implements OpcionDeMenu {
+public class CrearCDT extends OpcionDeMenu {
 
     public void ejecutar() {
         CuentaDebito cuentaDebito = null;

@@ -6,7 +6,7 @@ import uiMain.OpcionDeMenu;
 
 import java.util.ArrayList;
 
-public class VerCuentas implements OpcionDeMenu {
+public class VerCuentas extends OpcionDeMenu {
 
     public void ejecutar() {
         if (Main.usuario.getCuentas().isEmpty())
@@ -30,16 +30,17 @@ public class VerCuentas implements OpcionDeMenu {
 
             System.out.format(margen + "%-20s%-20s%n%n", "NÚMERO DE CUENTA", "TIPO DE CUENTA");
             for (String textoCuenta : textoCuentas) {
+                if (textoCuenta != null) {
+                    for (String cuenta : textoCuenta.split("-")) {
+                        if (cuenta.length() == 1) continue;
 
-                for (String cuenta : textoCuenta.split("-")) {
-                    if (cuenta.length() == 1) continue;
+                        for (String campo : cuenta.split(",")) System.out.format("%-20s", campo);
+                        System.out.println();
 
-                    for (String campo : cuenta.split(","))  System.out.format("%-20s", campo);
+                    }
+
                     System.out.println();
-
                 }
-
-                System.out.println();
             }
         }
 
