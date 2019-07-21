@@ -30,8 +30,8 @@ public class Retirar extends OpcionDeMenu {
 
         ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).retirar(Float.parseFloat(monto));
 
-        System.out.print(margen + "Retiro realizada exitosamente.\n\nPresiona Enter para continuar");
-        entrada.nextLine();
+        System.out.print(margen + "Retiro realizado exitosamente.\n\nPresiona Enter para continuar");
+        esperarEnter();
     }
 
     public String toString() { return "Retirar"; }

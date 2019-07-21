@@ -6,7 +6,13 @@ import java.util.Scanner;
 
 public interface RecursosVarios {
     Scanner entrada = new Scanner(new BufferedInputStream(System.in));
-    String margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    String margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+            "<<<<<<<<<<<<<<<<<<<<<<<<<<<< Bienvenido a Green Bank >>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n" +
+            "     $                                                                    $" + "\n"
+            + "  $  $  $                                                              $  $  $" + "\n"
+            + "   $ $ $            Un banco al alcance de sus posibilidades            $ $ $" + "\n"
+            + "     $                                                                    $" + "\n"
+            + "     $____________________________________________________________________$" + "\n\n\n";
 
     default void esperarEnter() {
         entrada.nextLine();

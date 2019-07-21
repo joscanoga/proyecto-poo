@@ -8,7 +8,7 @@ import uiMain.OpcionDeMenu;
 public class CrearCDT extends OpcionDeMenu {
 
     public void ejecutar() {
-        CuentaDebito cuentaDebito = null;
+        CuentaDebito cuentaDebito;
         float monto = 0;
         int meses = 0;
         String mensajeError = null;
@@ -18,7 +18,7 @@ public class CrearCDT extends OpcionDeMenu {
                     "\n\nPresiona Enter para continuar.");
         } else {
             if (cuentaDebito.getSaldo() == 0) {
-                System.out.print(margen + "El saldo de tu cuenta débito es 0, no es posible Crear un CDT." +
+                System.out.print(margen + "El saldo de tu cuenta débito es 0, no es posible crear un CDT" +
                         ".\n\nPresiona Enter para continuar.");
             } else {
                 while (true) {
@@ -42,31 +42,26 @@ public class CrearCDT extends OpcionDeMenu {
                         }
                     }
 
-                    System.out.format("%-20s: " + (meses == 0 ? "" : meses), "Cantidad de meses");
-                    if (meses == 0) {
-                        if (entrada.hasNextInt() && (meses = entrada.nextInt()) <= 0)
-                            mensajeError = "\"" + meses + "\" no es una cantidad de meses válido, debe ser mayor a 0.";
-                        else if (meses == 0 && !entrada.hasNextInt())
-                            mensajeError = "La los meses deben ser un número entero, \"" + entrada.next() + "\" no lo" +
-                                    " " +
-                                    "es.";
-                        if (mensajeError != null) {
-                            meses = 0;
-                            continue;
-                        }
+                    System.out.format("%-20s: ", "Cantidad de meses");
+                    if (entrada.hasNextInt() && (meses = entrada.nextInt()) <= 0)
+                        mensajeError = "\"" + meses + "\" no es una cantidad de meses válido, debe ser mayor a 0.";
+                    else if (meses == 0 && !entrada.hasNextInt())
+                        mensajeError = "Los meses deben ser un número entero, \"" + entrada.next() + "\" no lo es.";
+                    if (mensajeError != null) {
+                        meses = 0;
+                        continue;
                     }
 
                     break;
                 }
                 cuentaDebito.retirar(monto);
                 Main.usuario.anadirCuenta(new CDT(Main.usuario, monto, meses));
-                System.out.print(margen + "Cuenta crédito creada exitosamente.\n\nPresiona Enter para " +
+                System.out.print(margen + "CDT creado exitosamente.\n\nPresiona Enter para " +
                         "continuar.");
             }
-            entrada.nextLine();
         }
 
-        entrada.nextLine();
+        esperarEnter();
     }
 
     public String toString() { return "Crear CDT"; }

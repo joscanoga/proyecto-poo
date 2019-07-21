@@ -1,6 +1,5 @@
 package uiMain.menuConsola;
 
-import gestionAplicacion.cuentas.Cuenta;
 import gestionAplicacion.cuentas.CuentaCredito;
 import gestionAplicacion.cuentas.CuentaDebito;
 import uiMain.Main;
@@ -21,7 +20,7 @@ public class CrearCuentaCredito extends OpcionDeMenu {
 					"continuar.");
 		}
 
-		entrada.nextLine();
+		esperarEnter();
 	}
 	
 	public String toString(){ return "Crear cuenta crédito"; }

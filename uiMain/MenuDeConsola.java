@@ -1,13 +1,11 @@
 package uiMain;
 
-import java.io.BufferedInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class MenuDeConsola implements Serializable {
-    private ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
+public class MenuDeConsola implements Serializable, RecursosVarios {
+    private ArrayList<OpcionDeMenu> opciones = new ArrayList<>() {{
         add(new uiMain.menuConsola.SalirDeLaAplicacion());
     }};
 
@@ -23,18 +21,11 @@ public class MenuDeConsola implements Serializable {
     /* Se muestra el conjunto de opciones asociadas al correspondiente menu de
      * consola y se recibe entrada por parte del usuario (I/O) */
     void lanzarMenu() {
-        String titulo = "<<<<<<<<<<<<<<<<<<<<<<<<<<<< Bienvenido a Green Bank >>>>>>>>>>>>>>>>>>>>>>>>>>>\n\n" +
-                "     $                                                                    $" + "\n"
-                + "  $  $  $                                                              $  $  $" + "\n"
-                + "   $ $ $            Un banco al alcance de sus posibilidades            $ $ $" + "\n"
-                + "     $                                                                    $" + "\n"
-                + "     $____________________________________________________________________$" + "\n\n\n",
-                opcion =null, margen = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-        Scanner input = new Scanner(new BufferedInputStream(System.in));
+        String opcion = null;
         OpcionDeMenu[] arregloOpciones = opciones.toArray(new OpcionDeMenu[opciones.size()]);
 
         do {
-            System.out.format(margen + titulo + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario",
+            System.out.format(margen + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario",
                     "OPCIÓN",
                     "NÚMERO");
 
@@ -48,7 +39,7 @@ public class MenuDeConsola implements Serializable {
                 System.out.println("\n\"" + opcion + "\" no corresponde a ningún número de opción válido.");
 
             System.out.print("\nIngrese el número de la opción a ejecutar: ");
-        } while (!Pattern.compile("\\d+").matcher(opcion = input.next()).matches() || Integer.parseInt(opcion) < 1
+        } while (!Pattern.compile("\\d+").matcher(opcion = entrada.next()).matches() || Integer.parseInt(opcion) < 1
                 || Integer.parseInt(opcion) > arregloOpciones.length);
 
         arregloOpciones[Integer.parseInt(opcion) - 1].ejecutar();

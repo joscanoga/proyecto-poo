@@ -4,8 +4,6 @@ import gestionAplicacion.cuentas.Cuenta;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
 
-import java.util.ArrayList;
-
 public class VerCuentas extends OpcionDeMenu {
 
     public void ejecutar() {
@@ -45,7 +43,7 @@ public class VerCuentas extends OpcionDeMenu {
         }
 
         System.out.print("\nPresiona Enter para continuar.");
-        entrada.nextLine();
+        esperarEnter();
     }
 
     public String toString() { return "Ver cuentas"; }

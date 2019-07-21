@@ -1,6 +1,5 @@
 package uiMain.menuConsola;
 
-import gestionAplicacion.cuentas.Cuenta;
 import gestionAplicacion.cuentas.CuentaDebito;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
@@ -14,7 +13,7 @@ public class CrearCuentaDebito extends OpcionDeMenu {
         } else System.out.print(margen + "Ya tienes una cuenta débito, no es posible crear más.\n\nPresiona Enter " +
                 "para continuar.");
 
-        entrada.nextLine();
+        esperarEnter();
     }
 
     public String toString() { return "Crear cuenta dédito"; }

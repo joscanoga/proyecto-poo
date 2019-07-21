@@ -18,7 +18,7 @@ public class Consignar extends OpcionDeMenu {
             }
 
             if (Float.parseFloat(monto) == 0) {
-                textoError = "El monto debe ser mayor a 0";
+                textoError = "El monto debe ser mayor a 0.";
                 continue;
             }
             break;
@@ -27,7 +27,7 @@ public class Consignar extends OpcionDeMenu {
         ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).consignar(Float.parseFloat(monto));
 
         System.out.print(margen + "Consignación realizada exitosamente.\n\nPresiona Enter para continuar");
-        entrada.nextLine();
+        esperarEnter();
     }
 
     public String toString() { return "Consignar"; }
