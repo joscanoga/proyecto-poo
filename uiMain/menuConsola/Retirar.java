@@ -15,7 +15,7 @@ public class Retirar extends OpcionDeMenu {
             if (textoError != null) System.out.println(textoError + "\n");
             System.out.format("%-20s: ", "Monto");
             if (!esNumerico(monto = entrada.next(), "float")) {
-                textoError = "El valor del monto debe ser un valor numérico.";
+                textoError = "El valor del monto debe ser un valor numérico, \"" + monto + "\" no lo es.";
                 continue;
             }
 
