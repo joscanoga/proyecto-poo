@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 
 public class CuentaDebito extends Cuenta {
-    private float saldo = 20;
+    private float saldo;
     private ArrayList<Debito> debitos = new ArrayList<>();
     private ArrayList<Cheque> cheques = new ArrayList<>();
 

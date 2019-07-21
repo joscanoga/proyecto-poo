@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
             menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
                     "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"}),
             menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
-                    "CrearCuentaCredito", "CrearCuentaDebito", "ManejarCuenta", "VerCuentas"});
+                    "CrearCuentaCredito", "CrearCuentaDebito", "VerCuentas"});
 
     // Los invitados serán los usuarios que se crean con el constructor por defecto
     public Usuario() {

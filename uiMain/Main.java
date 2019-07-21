@@ -18,7 +18,6 @@ public class Main {
         put("CrearCuentaCredito", new CrearCuentaCredito());
         put("CrearCuentaDebito", new CrearCuentaDebito());
         put("IniciarSesion", new IniciarSesion());
-        put("ManejarCuenta", new ManejarCuenta());
         put("Registrarse", new Registrarse());
         put("RemoverOpcion", new RemoverOpcion());
         put("SalirDeLaAplicacion", new SalirDeLaAplicacion());
@@ -40,8 +39,6 @@ public class Main {
         usuarios = Serializador.cargar();
         definirInvitado();
         
-            usuario.getMenu().encabezado();
-
         for (;;)
             usuario.getMenu().lanzarMenu();
     }
