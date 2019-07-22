@@ -37,4 +37,5 @@ public interface RecursosVarios {
 
         return true;
     }
+
 }

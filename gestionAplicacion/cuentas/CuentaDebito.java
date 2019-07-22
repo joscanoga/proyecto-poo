@@ -1,8 +1,6 @@
 package gestionAplicacion.cuentas;
 
 import gestionAplicacion.usuarios.Usuario;
-import uiMain.RecursosVarios;
-
 
 import java.util.ArrayList;
 import java.util.Iterator;

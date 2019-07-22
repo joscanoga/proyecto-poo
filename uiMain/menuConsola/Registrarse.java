@@ -7,7 +7,7 @@ import uiMain.OpcionDeMenu;
 public class Registrarse extends OpcionDeMenu {
 	
 	public void ejecutar() {
-        String nombreUsuario = null, contrasena = null, textoError = null;
+        String nombreUsuario = null, contrasena, textoError = null;
 
         while (true) {
             System.out.print(margen + "REGISTRARSE\n\n" + (textoError != null ? textoError + "\n\n" : ""));

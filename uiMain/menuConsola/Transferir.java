@@ -7,39 +7,25 @@ import uiMain.OpcionDeMenu;
 
 public class Transferir extends OpcionDeMenu {
     public void ejecutar() {
-        String textoError = null, monto = null, numCuenta;
-        CuentaDebito cuentaDestino = null,
-                cuentaDebito = (CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas());
+        String numCuenta, textoError = null, monto = null;
+        CuentaDebito cuentaDestino = null;
 
-        if (cuentaDebito == null) {
-            System.out.print(margen +
-                    "Debes poseer una cuenta débito para poder transferir.\n\nPresiona Enter para continuar");
-            esperarEnter();
-            return;
-        }
-
-        float valorMonto = 0,
-                saldo = ((CuentaDebito)buscarObjetoEn(CuentaDebito.class, Main.usuario.getCuentas())).getSaldo();
+        if (filtrarOpcionesCuentaDebito("transferir") || filtrarSaldoNulo("transferir")) return;
 
         while (true) {
-            System.out.println(margen + "FORMULARIO DE TRANSFERENCIA\n");
-            if (textoError != null) System.out.println(textoError + "\n");
-            System.out.format("Valor de la%n%-20s: " + (monto != null ? valorMonto + "%n" : ""), "transferencia");
-            if (monto == null) {
-                if (!esNumerico(monto = entrada.next(), "float")) {
-                    textoError = "El valor de la transferencia debe ser un valor numérico, \"" + monto + "\" no lo es.";
-                    monto = null;
-                    continue;
-                }
-
-                valorMonto = Float.parseFloat(monto);
-                if (valorMonto <= 0 || valorMonto > saldo) {
-                    textoError = "El valor de la transferencia debe ser mayor a 0 y máximo " + quitarZeroDecimal(saldo);
-                    monto = null;
-                    continue;
-                }
+            System.out.print(margen + "TRANSFERIR\n\n" + (textoError != null ? textoError + "\n\n" : ""));
+            System.out.format("%-20s: " + (monto != null ? monto + "\n" : ""), "Monto a transferir");
+            if (monto == null && !esNumerico(monto = entrada.next(), "float")) {
+                textoError = "El monto a transferir debe ser un valor numérico, \"" + monto + "\" no lo es.";
+                monto = null;
+                continue;
+            } else if (Float.parseFloat(monto) <= 0 || Float.parseFloat(monto) > cuentaDebito.getSaldo()) {
+                textoError = "El monto a transferir debe ser mayor a 0 y máximo " +
+                        quitarZeroDecimal(cuentaDebito.getSaldo()) + " (el saldo de la cuenta débito de " +
+                        "origen), \"" + monto + "\" no lo cumple.";
+                monto = null;
+                continue;
             }
-
 
             System.out.format("Número de la%n%-20s: ", "cuenta destino");
             if (!esNumerico(numCuenta = entrada.next(), "float")) {
@@ -56,10 +42,7 @@ public class Transferir extends OpcionDeMenu {
 
             if (cuentaDestino == null) {
                 textoError = "No hay cuentas registradas con el número \"" + numCuenta + "\".";
-                continue;
-            }
-
-            break;
+            } else break;
         }
 
         cuentaDebito.transferir(cuentaDestino, Float.parseFloat(monto));

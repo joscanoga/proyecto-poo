@@ -6,7 +6,7 @@ import uiMain.OpcionDeMenu;
 public class CambiarContrasena extends OpcionDeMenu {
 	
 	public void ejecutar() {
-        String contraVieja = null, contrasena;
+        String contraVieja = null, contrasena, textoError = null;
 
         while (true) {
             System.out.print(margen + "CAMBIAR CONTRASEÑA\n\n" + (textoError != null ? textoError + "\n\n" : ""));

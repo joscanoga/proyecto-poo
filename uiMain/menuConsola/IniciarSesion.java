@@ -6,7 +6,7 @@ import uiMain.OpcionDeMenu;
 public class IniciarSesion extends OpcionDeMenu {
 
     public void ejecutar() {
-        String nombreUsuario = null;
+        String nombreUsuario = null, textoError = null;
 
         while (true) {
             System.out.print(margen + "INICIAR SESIÓN\n\n" + (textoError != null ? textoError + "\n\n" : ""));
@@ -23,6 +23,7 @@ public class IniciarSesion extends OpcionDeMenu {
             else break;
         }
         Main.usuario = Main.usuarios.get(nombreUsuario);
+        cargarInfoUsuario();
 
         System.out.print(margen + "Sesión iniciada.\n\nPresiona enter para continuar.");
         esperarEnter();
