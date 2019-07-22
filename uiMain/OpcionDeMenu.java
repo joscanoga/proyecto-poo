@@ -1,6 +1,7 @@
 package uiMain;
 
 import gestionAplicacion.cuentas.CDT;
+import gestionAplicacion.cuentas.Cheque;
 import gestionAplicacion.cuentas.CuentaCredito;
 import gestionAplicacion.cuentas.CuentaDebito;
 
@@ -9,7 +10,7 @@ import java.io.Serializable;
 public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
     public static CuentaDebito cuentaDebito;
     public static CuentaCredito cuentaCredito;
-    public static boolean tieneCDT, tieneDebito, tieneCheque, tieneCredito;
+    public static boolean tieneCDT, tieneDebito, tieneCheque, tieneCredito, chequesPorCobrar;
 
     protected abstract void ejecutar();
 
@@ -35,6 +36,15 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
         return cuentaDebito.getSaldo() == 0;
     }
 
+    public boolean filtrarOpcionesCheque(String verbo) {
+        if (!tieneCheque) {
+            System.out.print(margen + "No tienes cheques para " + verbo + ".\n\nPresiona Enter " +
+                    "para continuar.");
+            esperarEnter();
+        }
+        return !tieneCheque;
+    }
+
     public void cargarInfoUsuario() {
         setCuentaDebito();
         setCuentaCredito();
@@ -42,6 +52,7 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
         setTieneDebito();
         setTieneCheque();
         setTieneCredito();
+        setChequesPorCobrar();
     }
 
     public void setCuentaDebito() {
@@ -54,6 +65,10 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
 
     public void setTieneCDT() { tieneCDT = buscarObjetoEn(CDT.class, Main.usuario.getCuentas()) != null; }
 
+    public void setTieneCredito() {
+        tieneCredito = cuentaCredito != null && !cuentaCredito.getCreditos().isEmpty();
+    }
+
     public void setTieneDebito() {
         tieneDebito = cuentaDebito != null && !cuentaDebito.getDebitos().isEmpty();
     }
@@ -62,8 +77,17 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
         tieneCheque = cuentaDebito != null && !cuentaDebito.getCheques().isEmpty();
     }
 
-    public void setTieneCredito() {
-        tieneCredito = cuentaCredito != null && !cuentaCredito.getCreditos().isEmpty();
+    public void setChequesPorCobrar() {
+        if (cuentaDebito == null) chequesPorCobrar = false;
+        else {
+            for (Cheque cheque : cuentaDebito.getCheques()) {
+                if (!cheque.getCobrado()) {
+                    chequesPorCobrar = true;
+                    return;
+                }
+            }
+            chequesPorCobrar = false;
+        }
     }
 
 }

@@ -30,6 +30,8 @@ public class Main {
         put("DiligenciarCheque", new DiligenciarCheque());
         put("CrearDebito", new CrearDebito());
         put("DescartarDebito", new DescartarDebito());
+        put("VerCheques", new VerCheques());
+        put("CobrarCheque", new CobrarCheque());
     }};
     public static HashMap<String, Usuario> usuarios;
     public static Usuario usuario = new Usuario();

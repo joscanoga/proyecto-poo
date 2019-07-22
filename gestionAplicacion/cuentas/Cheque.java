@@ -1,42 +1,40 @@
 package gestionAplicacion.cuentas;
 
+import gestionAplicacion.usuarios.Usuario;
+import uiMain.OpcionDeMenu;
+
 import java.io.Serializable;
 
 public class Cheque implements Serializable {
-    final private int id;
-    final private CuentaDebito librador;
-    final private float monto;
-    final private String beneficiario;
-    private static int numeroCheques;
+    private final int id;
+    private final float monto;
+    private final Usuario librador;
+    private final String beneficiario;
     private boolean cobrado;
+    private static int contador;
 
-    Cheque(CuentaDebito ca, float m, String ben) {
-        monto = m;
-        librador = ca;
-        numeroCheques++;
-        id = numeroCheques;
-        cobrado = false;
-        beneficiario = ben;
+    private static final String[] menuDefectoCheques = new String[]{"VerCheques", "CobrarCheque"};
+
+    public Cheque(float monto, Usuario librador, String beneficiario) {
+        id = ++contador;
+        this.monto = monto;
+        this.librador = librador;
+        this.beneficiario = beneficiario;
+        if (!OpcionDeMenu.tieneCheque) librador.getMenu().anadirOpciones(menuDefectoCheques);
     }
 
-    public int getId() {return id;}
+    public String toString() { return id + "," + monto + "," + beneficiario + "," + (cobrado ? "Sí" : "No"); }
 
-    public float getMonto() {return monto;}
+    public void cobrar() { cobrado = true; }
 
-    public CuentaDebito getLibrador() {return librador;}
+    public int getId() { return id; }
 
-    public String getBeneficiario() {return beneficiario;}
+    public float getMonto() { return monto; }
 
-    public int getNumeroCheques() {return numeroCheques;}
+    public boolean getCobrado() { return cobrado; }
 
-    public void librar() {
-        if (!cobrado) {
-            librador.retirar(monto);
-            cobrado = true;
-        } else {
-            System.out.println("ya fue cobrado");
-        }
-    }
+    public static int getContador() { return contador; }
 
-    public boolean getCobrado() {return cobrado;}
+    public static void setContador(int contador) { Cheque.contador = contador; }
+
 }

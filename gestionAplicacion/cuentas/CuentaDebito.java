@@ -17,14 +17,7 @@ public class CuentaDebito extends Cuenta {
     public CuentaDebito(Usuario titular) {
         super(titular);
         titular.getMenu().anadirOpciones(menuDefectoCuentasDebito);
-
     }
-
-    public float getSaldo() { return saldo; }
-
-    public ArrayList<Cheque> getCheques() { return cheques; }
-
-    public ArrayList<Debito> getDebitos() { return debitos; }
 
     public void retirar(float valor) { saldo -= valor; }
 
@@ -38,17 +31,6 @@ public class CuentaDebito extends Cuenta {
     }
 
     public void anadirCheque(Cheque cheque) { cheques.add(cheque); }
-
-    public void removerCheque(int id) {
-        Iterator<Cheque> it = cheques.iterator();
-        while (it.hasNext()) {
-            Cheque e = it.next();
-            if (e.getId() == id) {
-                cheques.remove(cheques.indexOf(e));
-                break;
-            }
-        }
-    }
 
     public void anadirDebito(Debito debito) { debitos.add(debito); }
 
@@ -72,5 +54,11 @@ public class CuentaDebito extends Cuenta {
         return id + ",Cuenta débito," + saldo + "," + cheques.size() + "," + debitos.size();
     }
 
+    public float getSaldo() { return saldo; }
 
+    public ArrayList<Cheque> getCheques() { return cheques; }
+
+    public ArrayList<Debito> getDebitos() { return debitos; }
+
+    public void setSaldo(float saldo) { this.saldo = saldo; }
 }

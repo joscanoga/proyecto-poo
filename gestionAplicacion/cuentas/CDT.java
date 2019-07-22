@@ -10,7 +10,7 @@ public class CDT extends Cuenta {
 
     public CDT(Usuario titular, float monto, int meses) {
         super(titular);
-        mesesInicial = this.meses = meses;
+        mesesInicial = meses;
         montoInicial = this.monto = monto;
     }
 

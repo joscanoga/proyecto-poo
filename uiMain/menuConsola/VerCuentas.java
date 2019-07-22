@@ -26,7 +26,7 @@ public class VerCuentas extends OpcionDeMenu {
                         "-";
             }
 
-            System.out.format(margen + "%-20s%-20s%n%n", "NÚMERO DE CUENTA", "TIPO DE CUENTA");
+            System.out.format(margen + "%-20s%-20s%n", "NÚMERO DE CUENTA", "TIPO DE CUENTA");
             for (String textoCuenta : textoCuentas) {
                 if (textoCuenta != null) {
                     for (String cuenta : textoCuenta.split("-")) {
@@ -42,7 +42,7 @@ public class VerCuentas extends OpcionDeMenu {
             }
         }
 
-        System.out.print("\nPresiona Enter para continuar.");
+        System.out.print("Presiona Enter para continuar.");
         esperarEnter();
     }
 

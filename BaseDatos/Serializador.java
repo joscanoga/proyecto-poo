@@ -1,7 +1,9 @@
 package BaseDatos;
 
+import gestionAplicacion.cuentas.Cheque;
 import gestionAplicacion.cuentas.Cuenta;
 import gestionAplicacion.usuarios.Usuario;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +26,7 @@ public class Serializador {
 			 * correspondiente campo estático "contador" de Usuario para que reanude el conteo donde lo dejó. */
 			Usuario.setContador(in.readInt());
 			Cuenta.setContador(in.readInt());
+            Cheque.setContador(in.readInt());
 
 			while (true)
 				usuarios.add((Usuario) in.readObject());
@@ -53,6 +56,7 @@ public class Serializador {
 			 */
 			out.writeInt(Usuario.getContador());
 			out.writeInt(Cuenta.getContador());
+            out.writeInt(Cheque.getContador());
 
 			for (Map.Entry<String, Usuario> registro : usuarios.entrySet())
 				out.writeObject(registro.getValue());
