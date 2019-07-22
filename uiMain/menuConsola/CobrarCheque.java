@@ -25,9 +25,7 @@ public class CobrarCheque extends OpcionDeMenu {
                         }
                     }
                     if (chequePorCobrar != null) break;
-                    else {
-                        textoError = "No se encontró ningún cheque con el número \"" + numero + "\".";
-                    }
+                    else textoError = "No se encontró ningún cheque con el número \"" + numero + "\".";
                 }
             }
             if (chequePorCobrar.getCobrado())

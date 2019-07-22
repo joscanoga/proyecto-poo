@@ -2,6 +2,7 @@ package BaseDatos;
 
 import gestionAplicacion.cuentas.Cheque;
 import gestionAplicacion.cuentas.Cuenta;
+import gestionAplicacion.cuentas.Debito;
 import gestionAplicacion.usuarios.Usuario;
 
 import java.io.*;
@@ -27,6 +28,7 @@ public class Serializador {
 			Usuario.setContador(in.readInt());
 			Cuenta.setContador(in.readInt());
             Cheque.setContador(in.readInt());
+            Debito.setContador(in.readInt());
 
 			while (true)
 				usuarios.add((Usuario) in.readObject());
@@ -57,6 +59,7 @@ public class Serializador {
 			out.writeInt(Usuario.getContador());
 			out.writeInt(Cuenta.getContador());
             out.writeInt(Cheque.getContador());
+            out.writeInt(Debito.getContador());
 
 			for (Map.Entry<String, Usuario> registro : usuarios.entrySet())
 				out.writeObject(registro.getValue());

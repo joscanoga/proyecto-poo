@@ -1,6 +1,6 @@
 package gestionAplicacion.cuentas;
 
-import gestionAplicacion.usuarios.Usuario;
+import uiMain.Main;
 import uiMain.OpcionDeMenu;
 
 import java.io.Serializable;
@@ -8,19 +8,17 @@ import java.io.Serializable;
 public class Cheque implements Serializable {
     private final int id;
     private final float monto;
-    private final Usuario librador;
     private final String beneficiario;
     private boolean cobrado;
     private static int contador;
 
-    private static final String[] menuDefectoCheques = new String[]{"VerCheques", "CobrarCheque"};
+    private static final String[] menuDefectoCheque = new String[]{"VerCheques", "CobrarCheque"};
 
-    public Cheque(float monto, Usuario librador, String beneficiario) {
+    public Cheque(float monto, String beneficiario) {
         id = ++contador;
         this.monto = monto;
-        this.librador = librador;
         this.beneficiario = beneficiario;
-        if (!OpcionDeMenu.tieneCheque) librador.getMenu().anadirOpciones(menuDefectoCheques);
+        if (!OpcionDeMenu.tieneCheque) Main.usuario.getMenu().anadirOpciones(menuDefectoCheque);
     }
 
     public String toString() { return id + "," + monto + "," + beneficiario + "," + (cobrado ? "Sí" : "No"); }

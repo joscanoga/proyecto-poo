@@ -3,7 +3,6 @@ package gestionAplicacion.cuentas;
 import gestionAplicacion.usuarios.Usuario;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public class CuentaDebito extends Cuenta {
@@ -12,7 +11,7 @@ public class CuentaDebito extends Cuenta {
     private ArrayList<Cheque> cheques = new ArrayList<>();
 
     private static final String[] menuDefectoCuentasDebito = new String[]{"Consignar", "Retirar", "Transferir",
-            "DiligenciarCheque", "CrearDebito", "DescartarDebito"};
+            "LibrarCheque", "AnadirDebito"};
 
     public CuentaDebito(Usuario titular) {
         super(titular);
@@ -35,14 +34,16 @@ public class CuentaDebito extends Cuenta {
     public void anadirDebito(Debito debito) { debitos.add(debito); }
 
     public void removerDebito(int id) {
-        Iterator<Debito> it = debitos.iterator();
-        while (it.hasNext()) {
-            Debito e = it.next();
-            if (e.getId() == id) {
-                debitos.remove(debitos.indexOf(e));
-                break;
+        int contador = 0;
+        for (Debito debito : debitos) {
+            if (debito.getId() == id) {
+                debito.removerOpciones();
+                debitos.remove(contador);
+                return;
             }
+            contador++;
         }
+
     }
 
     public void abonarCredito(Credito c, Float valor) {

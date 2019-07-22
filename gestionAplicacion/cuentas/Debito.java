@@ -1,27 +1,37 @@
 package gestionAplicacion.cuentas;
 
+import uiMain.Main;
+import uiMain.OpcionDeMenu;
+
 import java.io.Serializable;
 
 public class Debito implements Serializable {
     private final int id;
-    private final CuentaDebito cuentaAsociada;
     private final float monto;
+    private int vecesDebitado;
     private static int contador;
+    private static final String[] menuDefectoDebito = new String[]{"RemoverDebito", "EfectuarDebito", "VerDebitos"};
 
-    Debito(CuentaDebito cuenta, float monto) {
+    public Debito(float monto) {
         id = ++contador;
-        cuentaAsociada = cuenta;
         this.monto = monto;
+        if (!OpcionDeMenu.tieneDebito) Main.usuario.getMenu().anadirOpciones(menuDefectoDebito);
     }
+
+    public void removerOpciones() {
+        if (OpcionDeMenu.tieneDebito) Main.usuario.getMenu().removerOpciones(menuDefectoDebito);
+    }
+
+    public String toString() { return id + "," + monto + "," + vecesDebitado; }
+
+    public void debitar() { vecesDebitado++; }
 
     public int getId() { return id; }
 
-    public CuentaDebito getCuentaAsociada() { return cuentaAsociada; }
-
     public float getMonto() { return monto; }
 
-    public static int getNumeroDebitos() { return contador; }
+    public static int getContador() { return contador; }
 
-    public void debitar() { cuentaAsociada.retirar(monto); }
+    public static void setContador(int contador) { Debito.contador = contador; }
 
 }

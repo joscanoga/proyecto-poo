@@ -27,11 +27,13 @@ public class Main {
         put("Consignar", new Consignar());
         put("Retirar", new Retirar());
         put("Transferir", new Transferir());
-        put("DiligenciarCheque", new DiligenciarCheque());
-        put("CrearDebito", new CrearDebito());
-        put("DescartarDebito", new DescartarDebito());
+        put("LibrarCheque", new LibrarCheque());
+        put("AnadirDebito", new AnadirDebito());
         put("VerCheques", new VerCheques());
         put("CobrarCheque", new CobrarCheque());
+        put("RemoverDebito", new RemoverDebito());
+        put("VerDebitos", new VerDebitos());
+        put("EfectuarDebito", new EfectuarDebito());
     }};
     public static HashMap<String, Usuario> usuarios;
     public static Usuario usuario = new Usuario();

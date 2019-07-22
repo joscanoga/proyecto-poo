@@ -16,7 +16,26 @@ public class MenuDeConsola implements Serializable, RecursosVarios {
             anadirOpcion(Main.listaOpciones.get(opcion));
     }
 
-    public void anadirOpcion(OpcionDeMenu opcion) { opciones.add(opcion); }
+    public final void removerOpciones(String[] menu) {
+
+        for (String opcion : menu)
+            removerOpcion(Main.listaOpciones.get(opcion));
+    }
+
+    public final void anadirOpcion(OpcionDeMenu opcion) { opciones.add(opcion); }
+
+    public final boolean removerOpcion(OpcionDeMenu opcion) {
+        int contador = 0;
+        for (OpcionDeMenu opcionEnMenu : opciones) {
+            if (opcionEnMenu.getClass().equals(opcion.getClass())) {
+                System.out.println(opcion + "encontrada");
+                opciones.remove(contador);
+                return true;
+            }
+            contador++;
+        }
+        return false;
+    }
 
     /* Se muestra el conjunto de opciones asociadas al correspondiente menu de
      * consola y se recibe entrada por parte del usuario (I/O) */
