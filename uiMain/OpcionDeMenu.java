@@ -18,6 +18,25 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
         return Main.usuarios.containsKey(nombre);
     }
 
+
+    public boolean filtrarOpcionesCuentaCredito(String verbo) {
+        if (cuentaCredito == null) {
+            System.out.print(margen +
+                    "Debes tener una cuenta crédito para poder " + verbo + ".\n\nPresiona Enter para continuar");
+            esperarEnter();
+        }
+        return cuentaCredito == null;
+    }
+
+    public boolean filtrarCupoNulo(String verbo) {
+        if (cuentaCredito.getCupo() == 0) {
+            System.out.print(margen + "El cupo de tu cuenta crédito es 0, no puedes " + verbo + ".\n\nPresiona Enter " +
+                    "para continuar.");
+            esperarEnter();
+        }
+        return cuentaCredito.getCupo() == 0;
+    }
+
     public boolean filtrarOpcionesCuentaDebito(String verbo) {
         if (cuentaDebito == null) {
             System.out.print(margen +

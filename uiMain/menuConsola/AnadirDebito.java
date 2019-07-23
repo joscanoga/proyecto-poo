@@ -14,7 +14,11 @@ public class AnadirDebito extends OpcionDeMenu {
             System.out.print(margen + "Añadir débito\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: ", "Monto del débito");
             if (!esNumerico(monto = entrada.next(), "float"))
+<<<<<<< HEAD
                 textoError = "El monto del débito debe ser un valor numérico, \"" + monto + "\" no lo es.";
+=======
+                textoError = "El monto del débito debe ser un valor num�rico, \"" + monto + "\" no lo es.";
+>>>>>>> parent of 7302490... Add files via upload
             else if (Float.parseFloat(monto) <= 0)
                 textoError = "El monto del débito debe ser mayor a 0, \"" + monto + "\" no lo cumple.";
             else break;

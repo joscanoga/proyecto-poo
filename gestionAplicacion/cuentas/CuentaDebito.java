@@ -43,12 +43,11 @@ public class CuentaDebito extends Cuenta {
             }
             contador++;
         }
-
     }
 
-    public void abonarCredito(Credito c, Float valor) {
+    public void abonarCredito(Credito credito, Float valor) {
         this.retirar(valor);
-        c.pagarParcial(valor);
+        credito.pagarParcial(valor);
     }
 
     public String toString() {

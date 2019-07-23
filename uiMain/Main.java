@@ -34,6 +34,7 @@ public class Main {
         put("RemoverDebito", new RemoverDebito());
         put("VerDebitos", new VerDebitos());
         put("EfectuarDebito", new EfectuarDebito());
+        put("AnadirCredito", new AnadirCredito());
     }};
     public static HashMap<String, Usuario> usuarios;
     public static Usuario usuario = new Usuario();

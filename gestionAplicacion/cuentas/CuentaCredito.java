@@ -11,61 +11,45 @@ public class CuentaCredito extends Cuenta {
     private static float interes = (float)2.5;
     private ArrayList<Credito> creditos = new ArrayList<>();
 
+    private static final String[] menuDefectoCuentasCredito = new String[]{"AnadirCredito"};
+
     public CuentaCredito(Usuario titular) {
         super(titular);
+        titular.getMenu().anadirOpciones(menuDefectoCuentasCredito);
     }
-
-    public float getCupo() { return cupo; }
-
-    public float getdeuda() { return deuda; }
-
-    public float getIntereses() { return interes; }
-
-    public ArrayList<Credito> getCreditos() { return creditos; }
-
-    public void avanceCuentaDebito(Float valor, CuentaDebito ca) {
-        creditos.add(new Credito(this, valor, 18));
-        ca.consignar(valor);
-
-    }
-
-    public void anadirCredito(Credito cr) {
-        creditos.add(cr);
-    }
-
-    public void removerCredito(Credito cr) {
-        Iterator<Credito> it = creditos.iterator();
-        while (it.hasNext()) {
-            Credito e = it.next();
-            if (e.getId() == id) {
-                creditos.remove(creditos.indexOf(e));
-                break;
-            }
-        }
-
-    }
-
-    public void aumentarCupo(float valor) {cupo += valor;}
-
-    public void aumentarDeuda(float valor) {deuda += valor;}
-
-    public void mermarCupo(float valor) {cupo -= valor;}
-
-    public void mermarDeuda(float valor) {deuda -= valor;}
 
     public String toString() {
         return id + ",Cuenta crédito," + deuda + "," + cupo + "," + interes + "," + creditos.size();
     }
 
-    public String mostrarInfo() {
-        String screditos = "";
-        Iterator<Credito> it = creditos.iterator();
-        while (it.hasNext()) {
-            screditos += it.toString() + "\n";
+    public void anadirCredito(Credito credito) { creditos.add(credito); }
+
+    public void removerCredito(int id) {
+        int contador = 0;
+        for (Credito credito : creditos) {
+            if (credito.getId() == id) {
+                creditos.remove(contador);
+                return;
+            }
+            contador++;
         }
-        String x = "id cuenta credito" + id + "\n cupo:" + cupo + "\n deuda:" + deuda + "\n tasa de interes" + interes + "\n creditos \n" + screditos;
-        return (x);
     }
+
+    public float getDeuda() { return deuda; }
+
+    public float getCupo() { return cupo; }
+
+    public float getInteres() { return interes; }
+
+    public ArrayList<Credito> getCreditos() { return creditos; }
+
+    public void aumentarCupo(float valor) { cupo += valor; }
+
+    public void disminuirCupo(float valor) { cupo -= valor; }
+
+    public void aumentarDeuda(float valor) { deuda += valor; }
+
+    public void disminuirDeuda(float valor) { deuda -= valor; }
 
 
 }

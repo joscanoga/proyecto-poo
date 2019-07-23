@@ -13,7 +13,7 @@ public class Consignar extends OpcionDeMenu {
             System.out.format("%-20s: ", "Monto");
             if (!esNumerico(monto = entrada.next(), "float"))
                 textoError = "El valor del monto debe ser un valor numérico, " + "\"" + monto + "\" no lo es.";
-            else if (Float.parseFloat(monto) == 0) textoError = "El monto debe ser mayor a 0.";
+            else if (Float.parseFloat(monto) <= 0) textoError = "El monto debe ser mayor a 0.";
             else break;
         }
 
