@@ -21,7 +21,7 @@ public class Cheque implements Serializable {
         if (!OpcionDeMenu.tieneCheque) Main.usuario.getMenu().anadirOpciones(menuDefectoCheque);
     }
 
-    public String toString() { return id + "," + monto + "," + beneficiario + "," + (cobrado ? "SÃ­" : "No"); }
+    public String toString() { return id + "," + monto + "," + beneficiario + "," + (cobrado ? "sí" : "No"); }
 
     public void cobrar() { cobrado = true; }
 

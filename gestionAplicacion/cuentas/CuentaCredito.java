@@ -54,7 +54,7 @@ public class CuentaCredito extends Cuenta {
     public void mermarDeuda(float valor) {deuda -= valor;}
 
     public String toString() {
-        return id + ",Cuenta crÃ©dito," + deuda + "," + cupo + "," + interes + "," + creditos.size();
+        return id + ",Cuenta crédito," + deuda + "," + cupo + "," + interes + "," + creditos.size();
     }
 
     public String mostrarInfo() {

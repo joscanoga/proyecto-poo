@@ -52,7 +52,7 @@ public class CuentaDebito extends Cuenta {
     }
 
     public String toString() {
-        return id + ",Cuenta dÃ©bito," + saldo + "," + cheques.size() + "," + debitos.size();
+        return id + ",Cuenta débito," + saldo + "," + cheques.size() + "," + debitos.size();
     }
 
     public float getSaldo() { return saldo; }
