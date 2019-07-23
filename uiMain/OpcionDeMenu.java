@@ -21,7 +21,7 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
     public boolean filtrarOpcionesCuentaDebito(String verbo) {
         if (cuentaDebito == null) {
             System.out.print(margen +
-                    "Debes tener una cuenta dÃ©bito para poder " + verbo + ".\n\nPresiona Enter para continuar");
+                    "Debes tener una cuenta débito para poder " + verbo + ".\n\nPresiona Enter para continuar");
             esperarEnter();
         }
         return cuentaDebito == null;
@@ -29,7 +29,7 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
 
     public boolean filtrarSaldoNulo(String verbo) {
         if (cuentaDebito.getSaldo() == 0) {
-            System.out.print(margen + "El saldo de tÃº cuenta dÃ©bito es 0, no puedes " + verbo + ".\n\nPresiona Enter " +
+            System.out.print(margen + "El saldo de tú cuenta débito es 0, no puedes " + verbo + ".\n\nPresiona Enter " +
                     "para continuar.");
             esperarEnter();
         }
@@ -47,7 +47,7 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
 
     public boolean filtrarOpcionesDebito(String verbo) {
         if (!tieneDebito) {
-            System.out.print(margen + "No tienes dÃ©bitos para " + verbo + ".\n\nPresiona Enter " +
+            System.out.print(margen + "No tienes débitos para " + verbo + ".\n\nPresiona Enter " +
                     "para continuar.");
             esperarEnter();
         }
