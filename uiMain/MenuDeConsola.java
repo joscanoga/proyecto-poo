@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class MenuDeConsola implements Serializable, RecursosVarios {
-    private ArrayList<OpcionDeMenu> opciones = new ArrayList<>() {{
+    private ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
         add(new uiMain.menuConsola.SalirDeLaAplicacion());
     }};
 
@@ -45,8 +45,8 @@ public class MenuDeConsola implements Serializable, RecursosVarios {
 
         do {
             System.out.format(margen + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario",
-                    "OPCIÃ“N",
-                    "NÃšMERO");
+                    "OPCIÓN",
+                    "NÚMERO");
 
             // Temporal
             Main.mostrarUsuarios();
@@ -55,9 +55,9 @@ public class MenuDeConsola implements Serializable, RecursosVarios {
                 System.out.format("%-25s%d%n", arregloOpciones[i], i + 1);
 
             if (opcion != null)
-                System.out.println("\n\"" + opcion + "\" no corresponde a ningÃºn nÃºmero de opciÃ³n vÃ¡lido.");
+                System.out.println("\n\"" + opcion + "\" no corresponde a ningún número de opción válido.");
 
-            System.out.print("\nIngrese el nÃºmero de la opciÃ³n a ejecutar: ");
+            System.out.print("\nIngrese el número de la opción a ejecutar: ");
         } while (!Pattern.compile("\\d+").matcher(opcion = entrada.next()).matches() || Integer.parseInt(opcion) < 1
                 || Integer.parseInt(opcion) > arregloOpciones.length);
 
