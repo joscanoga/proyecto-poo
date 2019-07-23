@@ -42,7 +42,7 @@ public class VerCuentas extends OpcionDeMenu {
             }
         }
 
-        System.out.print("Presiona Enter para continuar.");
+        System.out.print("\nPresiona Enter para continuar.");
         esperarEnter();
     }
 

@@ -10,7 +10,7 @@ public class SalirDeLaAplicacion extends OpcionDeMenu {
 		try {
 			Serializador.guardar(Main.usuarios);
 		} catch (Exception e) {
-			System.out.println("Los datos no fueron guardaron correctamente.");
+			System.out.println("ERROR. No se guardaron los datos" + e.getMessage());
 		}
 
 		System.out.print("\nLa ejecución de la aplicación ha sido terminada.");

@@ -3,63 +3,48 @@ package gestionAplicacion.cuentas;
 import gestionAplicacion.usuarios.Usuario;
 import uiMain.OpcionDeMenu;
 
-public class Credito {
-    private final int id, cuotasIniciales;
+import java.io.Serializable;
+
+public class Credito implements Serializable {
+    private final int id;
     private final CuentaCredito cuenta;
-    private final float montoConIntereses, montoInicial;
-    private float montoPendiente, valorCuota;
+    private final CuentaDebito cuentaDebito;
+    private float monto, valorCuota;
     private int cuotas;
     private static int contador;
     private static final String[] menuDefectoDebito = new String[]{"PagarCuotaCredito", "PagoParcialCredito",
             "VerCreditos"};
 
-    public Credito(Usuario titular, float montoInicial, int cuotas, CuentaCredito cuentaCredito) {
+    public Credito(Usuario titular, float monto, int cuotas, CuentaCredito cuentaCredito, CuentaDebito cuentaDebito) {
         id = contador++;
         cuenta = cuentaCredito;
-        this.montoInicial = montoInicial;
-        cuotasIniciales = this.cuotas = cuotas;
+        this.cuentaDebito = cuentaDebito;
 
         int intereses = 0;
-        float valorCuota = montoInicial / cuotas;
+        float valorCuota = monto / cuotas;
 
         for (int i = 0; ++i <= cuotas;)
-            intereses += (cuenta.getInteres() / 100) * (montoInicial - (i - 1) * valorCuota);
+            intereses += (cuenta.getInteres() / 100) * (monto - (i - 1) * valorCuota);
 
-        montoConIntereses = montoPendiente = montoInicial + intereses;
-        this.valorCuota = montoPendiente / cuotas;
-        cuenta.disminuirCupo(montoInicial);
+        this.monto = monto + intereses;
+        this.valorCuota = this.monto / cuotas;
+
+        cuenta.disminuirCupo(monto);
+        cuenta.aumentarDeuda(monto);
 
         if(!OpcionDeMenu.tieneCredito) titular.getMenu().anadirOpciones(menuDefectoDebito);
     }
 
     void pagarParcial(float pago) {
-        montoPendiente -= pago;
+        monto -= pago;
         cuenta.aumentarCupo(pago);
         cuenta.disminuirDeuda(pago);
-        if (montoPendiente <= 0) cuenta.removerCredito(id);
+        if (monto <= 0) cuenta.removerCredito(id);
     }
 
-    public String toString() {
-        return id + "," + montoInicial + "," + cuotasIniciales + "," + valorCuota + "," + montoPendiente + "," + cuotas;
-    }
+    public String toString() { return id + "," + monto + "," + cuotas + "," + valorCuota; }
 
     public int getId() { return id; }
-
-    public int getCuotasIniciales() { return cuotasIniciales; }
-
-    public float getMontoInicial() { return montoInicial; }
-
-    public float getMontoPendiente() { return montoPendiente; }
-
-    public void setMontoPendiente(float montoPendiente) { this.montoPendiente = montoPendiente; }
-
-    public float getValorCuota() { return valorCuota; }
-
-    public void setValorCuota(float valorCuota) { this.valorCuota = valorCuota; }
-
-    public int getCuotas() { return cuotas; }
-
-    public void setCuotas(int cuotas) { this.cuotas = cuotas; }
 
     public static int getContador() { return contador; }
 

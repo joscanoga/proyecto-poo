@@ -73,6 +73,14 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
         return !tieneDebito;
     }
 
+    public boolean filtrarOpcionesCredito(String verbo) {
+        if (!tieneCredito) {
+            System.out.println(margen + "No tienes créditos para " + verbo + ".\n\nPresiona Enter " +
+                    "para continuar.");
+        }
+        return !tieneCredito;
+    }
+
     public void cargarInfoUsuario() {
         setCuentaDebito();
         setCuentaCredito();

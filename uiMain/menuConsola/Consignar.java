@@ -25,3 +25,4 @@ public class Consignar extends OpcionDeMenu {
 
     public String toString() { return "Consignar"; }
 }
+

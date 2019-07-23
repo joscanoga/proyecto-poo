@@ -29,14 +29,16 @@ public class AnadirCredito extends OpcionDeMenu {
             if (!esNumerico(cuotas = entrada.next(), "int"))
                 textoError = "El número de cuotas debe ser un entero \"" + cuotas + "\" no lo es.";
             else if (Integer.parseInt(cuotas) <= 0)
-                textoError = "El número de cuotas no puede ser 0.";
+                textoError = "El número de cuotas no debe ser mayor a 0.";
             else break;
         }
 
         cuentaCredito.anadirCredito(new Credito(Main.usuario, Float.parseFloat(monto), Integer.parseInt(cuotas),
-                cuentaCredito));
+                cuentaCredito, cuentaDebito));
 
-        System.out.print(margen + "Cuenta crédito creada exitosamente.\n\nPresiona Enter para continuar.");
+        tieneCredito = true;
+
+        System.out.print(margen + "Crédito añadido exitosamente.\n\nPresiona Enter para continuar.");
 
         esperarEnter();
     }
