@@ -16,17 +16,17 @@ public class VerCuentas extends OpcionDeMenu {
             for (Cuenta cuenta : Main.usuario.getCuentas()) {
                 infoCuenta = cuenta.toString().split(",");
                 if (infoCuenta[1].equals("Cuenta dÃ©bito"))
-                    textoCuentas[0] = ",,SALDO,NÃšMERO DE CHEQUES,NÃšMERO DE DÃ‰BITOS-" + cuenta + "-";
+                    textoCuentas[0] = ",,SALDO,NÚMERO DE CHEQUES,NÚMERO DE DÉBITOS-" + cuenta + "-";
                 else if (infoCuenta[1].equals("CDT")) {
                     if (textoCuentas[2] == null)
                         textoCuentas[2] = ",,MONTO INICIAL,MONTO ACTUAL,TASA DE INCREMENTO,PLAZO INICIAL," +
                                 "MESES TRANSCURRIDOS-";
                     textoCuentas[2] += cuenta + "-";
-                } else textoCuentas[1] = ",,DEUDA TOTAL,CUPO CREDITICIO,INTERÃ‰S,NÃšMERO DE CRÃ‰DITOS-" + cuenta +
+                } else textoCuentas[1] = ",,DEUDA TOTAL,CUPO CREDITICIO,INTERÉS,NÚMERO DE CRÉDITOS-" + cuenta +
                         "-";
             }
 
-            System.out.format(margen + "%-20s%-20s%n", "NÃšMERO DE CUENTA", "TIPO DE CUENTA");
+            System.out.format(margen + "%-20s%-20s%n", "NÚMERO DE CUENTA", "TIPO DE CUENTA");
             for (String textoCuenta : textoCuentas) {
                 if (textoCuenta != null) {
                     for (String cuenta : textoCuenta.split("-")) {

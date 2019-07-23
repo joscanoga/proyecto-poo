@@ -8,5 +8,5 @@ public class RemoverOpcion extends OpcionDeMenu {
 		
 	}
 
-	public String toString(){ return "Remover opciÃ³n"; }
+	public String toString(){ return "Remover opción"; }
 }

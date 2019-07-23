@@ -8,7 +8,7 @@ public class VerDebitos extends OpcionDeMenu {
     public void ejecutar() {
         if (filtrarOpcionesDebito("ver")) return;
 
-        System.out.format(margen + "%-20s%-20s%-20s%n%48s%n", "NÃšMERO DEL DÃ‰BITO", "MONTO", "NÃšMERO DE VECES",
+        System.out.format(margen + "%-20s%-20s%-20s%n%48s%n", "NÚMERO DEL DÉBITO", "MONTO", "NÚMERO DE VECES",
                 "DEBITADO");
 
         for (Debito debito : cuentaDebito.getDebitos()) {
@@ -20,6 +20,6 @@ public class VerDebitos extends OpcionDeMenu {
         esperarEnter();
     }
 
-    public String toString() { return "Ver dÃ©bitos"; }
+    public String toString() { return "Ver débitos"; }
 
 }

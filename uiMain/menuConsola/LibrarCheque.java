@@ -13,7 +13,7 @@ public class LibrarCheque extends OpcionDeMenu {
             System.out.print(margen + "LIBRAR CHEQUE\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: ", "Monto del cheque");
             if (!esNumerico(monto = entrada.next(), "float"))
-                textoError = "El monto del cheque debe ser un valor numÃ©rico, \"" + monto + "\" no lo es.";
+                textoError = "El monto del cheque debe ser un valor numérico, \"" + monto + "\" no lo es.";
             else if (Float.parseFloat(monto) <= 0)
                 textoError = "El monto del cheque debe ser mayor a 0, \"" + monto + "\" no lo cumple.";
             else break;

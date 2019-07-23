@@ -8,13 +8,13 @@ public class AnadirDebito extends OpcionDeMenu {
     public void ejecutar() {
         String textoError = null, monto;
 
-        if (filtrarOpcionesCuentaDebito("crear un dÃ©bito")) return;
+        if (filtrarOpcionesCuentaDebito("crear un débito")) return;
 
         while (true) {
             System.out.print(margen + "Añadir débito\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: ", "Monto del débito");
             if (!esNumerico(monto = entrada.next(), "float"))
-                textoError = "El monto del dÃ©bito debe ser un valor numérico, \"" + monto + "\" no lo es.";
+                textoError = "El monto del débito debe ser un valor numérico, \"" + monto + "\" no lo es.";
             else if (Float.parseFloat(monto) <= 0)
                 textoError = "El monto del débito debe ser mayor a 0, \"" + monto + "\" no lo cumple.";
             else break;

@@ -12,10 +12,10 @@ public class Retirar extends OpcionDeMenu {
             System.out.print(margen + "RETIRAR\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: ", "Monto");
             if (!esNumerico(monto = entrada.next(), "float"))
-                textoError = "El monto debe ser un valor num√©rico, \"" + monto + "\" no lo es.";
+                textoError = "El monto debe ser un valor numÈrico, \"" + monto + "\" no lo es.";
             else if (Float.parseFloat(monto) <= 0 || Float.parseFloat(monto) > cuentaDebito.getSaldo()) {
-                textoError = "El monto debe ser mayor a 0 y m√°ximo " + quitarZeroDecimal(cuentaDebito.getSaldo()) +
-                        " (el saldo de la cuenta d√©bito), el valor \"" + monto + "\" no lo cumple.";
+                textoError = "El monto debe ser mayor a 0 y m·ximo " + quitarZeroDecimal(cuentaDebito.getSaldo()) +
+                        " (el saldo de la cuenta dÈbito), el valor \"" + monto + "\" no lo cumple.";
             } else break;
         }
 

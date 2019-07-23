@@ -16,20 +16,20 @@ public class Transferir extends OpcionDeMenu {
             System.out.print(margen + "TRANSFERIR\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: " + (monto != null ? monto + "\n" : ""), "Monto a transferir");
             if (monto == null && !esNumerico(monto = entrada.next(), "float")) {
-                textoError = "El monto a transferir debe ser un valor numÃ©rico, \"" + monto + "\" no lo es.";
+                textoError = "El monto a transferir debe ser un valor numérico, \"" + monto + "\" no lo es.";
                 monto = null;
                 continue;
             } else if (Float.parseFloat(monto) <= 0 || Float.parseFloat(monto) > cuentaDebito.getSaldo()) {
-                textoError = "El monto a transferir debe ser mayor a 0 y mÃ¡ximo " +
-                        quitarZeroDecimal(cuentaDebito.getSaldo()) + " (el saldo de la cuenta dÃ©bito de " +
+                textoError = "El monto a transferir debe ser mayor a 0 y máximo " +
+                        quitarZeroDecimal(cuentaDebito.getSaldo()) + " (el saldo de la cuenta débito de " +
                         "origen), \"" + monto + "\" no lo cumple.";
                 monto = null;
                 continue;
             }
 
-            System.out.format("NÃºmero de la%n%-20s: ", "cuenta destino");
+            System.out.format("Número de la%n%-20s: ", "cuenta destino");
             if (!esNumerico(numCuenta = entrada.next(), "float")) {
-                textoError = "\"" + numCuenta + "\" no es un nÃºmero vÃ¡lido en el nÃºmero de la cuenta.";
+                textoError = "\"" + numCuenta + "\" no es un número válido en el número de la cuenta.";
                 continue;
             }
 
@@ -41,7 +41,7 @@ public class Transferir extends OpcionDeMenu {
             }
 
             if (cuentaDestino == null) {
-                textoError = "No hay cuentas registradas con el nÃºmero \"" + numCuenta + "\".";
+                textoError = "No hay cuentas registradas con el número \"" + numCuenta + "\".";
             } else break;
         }
 

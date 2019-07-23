@@ -12,10 +12,10 @@ public class RemoverDebito extends OpcionDeMenu {
         if (filtrarOpcionesDebito("remover")) return;
 
         while (true) {
-            System.out.print(margen + "REMOVER CRÃ‰DITO\n\n" + (textoError != null ? textoError + "\n\n" : ""));
-            System.out.format("%-20s: ", "NÃºmero del dÃ©bito");
+            System.out.print(margen + "REMOVER CRÉDITO\n\n" + (textoError != null ? textoError + "\n\n" : ""));
+            System.out.format("%-20s: ", "Número del débito");
             if (!esNumerico(numero = entrada.next(), "int"))
-                textoError = "El numero debe del dÃ©bito debe ser un valor numÃ©rico, \"" + numero + "\" no lo es.";
+                textoError = "El número debe del débito debe ser un valor numérico, \"" + numero + "\" no lo es.";
             else {
                 for (Debito debito : cuentaDebito.getDebitos()) {
                     if (debito.getId() == Integer.parseInt(numero)) {
@@ -24,17 +24,17 @@ public class RemoverDebito extends OpcionDeMenu {
                     }
                 }
                 if (debitoARemover != null) break;
-                else textoError = "No se encontrÃ³ ningÃºn cheque con el nÃºmero \"" + numero + "\".";
+                else textoError = "No se encontró ningún cheque con el número \"" + numero + "\".";
             }
         }
 
         cuentaDebito.removerDebito(debitoARemover.getId());
         setTieneDebito();
-        System.out.print(margen + "DÃ©bito removido exitosamente.\n\nPresiona Enter para continuar.");
+        System.out.print(margen + "Débito removido exitosamente.\n\nPresiona Enter para continuar.");
         esperarEnter();
 
     }
 
-    public String toString() { return "Remover dÃ©bito"; }
+    public String toString() { return "Remover débito"; }
 
 }

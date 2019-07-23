@@ -7,7 +7,7 @@ public class VerCheques extends OpcionDeMenu {
     public void ejecutar() {
         if (filtrarOpcionesCheque("ver")) return;
 
-        System.out.format(margen + "%-20s%-20s%-20s%-20s%n", "NÃšMERO DEL CHEQUE", "MONTO", "BENEFICIARIO", "COBRADO");
+        System.out.format(margen + "%-20s%-20s%-20s%-20s%n", "NÚMERO DEL CHEQUE", "MONTO", "BENEFICIARIO", "COBRADO");
 
         for(Cheque cheque : cuentaDebito.getCheques()) {
             for (String campo : ("" + cheque).split(",")) System.out.format("%-20s", campo);

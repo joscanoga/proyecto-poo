@@ -14,9 +14,9 @@ public class CobrarCheque extends OpcionDeMenu {
         } else {
             while (true) {
                 System.out.print(margen + "COBRAR CHEQUE\n\n" + (textoError != null ? textoError + "\n\n" : ""));
-                System.out.format("%-20s: ", "NÃºmero del cheque");
+                System.out.format("%-20s: ", "Número del cheque");
                 if (!esNumerico(numero = entrada.next(), "int"))
-                    textoError = "El numero debe del cheque debe ser un valor numÃ©rico, \"" + numero + "\" no lo es.";
+                    textoError = "El numero debe del cheque debe ser un valor numérico, \"" + numero + "\" no lo es.";
                 else {
                     for (Cheque cheque : cuentaDebito.getCheques()) {
                         if (cheque.getId() == Integer.parseInt(numero)) {
@@ -25,15 +25,15 @@ public class CobrarCheque extends OpcionDeMenu {
                         }
                     }
                     if (chequePorCobrar != null) break;
-                    else textoError = "No se encontrÃ³ ningÃºn cheque con el nÃºmero \"" + numero + "\".";
+                    else textoError = "No se encontró ningÃºn cheque con el número \"" + numero + "\".";
                 }
             }
             if (chequePorCobrar.getCobrado())
-                System.out.print(margen + "El cheque de nÃºmero \"" + numero + "\" ya fuÃ© cobrado.\n\nPresiona Enter " +
+                System.out.print(margen + "El cheque de número \"" + numero + "\" ya fué cobrado.\n\nPresiona Enter " +
                         "para continuar.");
             else {
                 if (cuentaDebito.getSaldo() < chequePorCobrar.getMonto()) {
-                    System.out.println("El saldo de tu cuenta dÃ©bito (" + cuentaDebito.getSaldo() + ") no es suficiente " +
+                    System.out.println("El saldo de tu cuenta débito (" + cuentaDebito.getSaldo() + ") no es suficiente " +
                             "para cobrar monto del cheque (" + chequePorCobrar.getMonto() + ").\n\nPresiona Enter para " +
                             "continuar.");
                 } else {

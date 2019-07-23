@@ -8,5 +8,5 @@ public class AnadirOpcion extends OpcionDeMenu {
 		
 	}
 
-	public String toString(){ return "AÃ±adir opciÃ³n"; }
+	public String toString(){ return "Añadir opción"; }
 }
