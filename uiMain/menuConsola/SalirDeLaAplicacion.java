@@ -13,10 +13,10 @@ public class SalirDeLaAplicacion extends OpcionDeMenu {
 			System.out.println("Los datos no fueron guardaron correctamente.");
 		}
 
-		System.out.print("\nLa ejecuciÃ³n de la aplicaciÃ³n ha sido terminada.");
+		System.out.print("\nLa ejecución de la aplicación ha sido terminada.");
 		System.exit(0);
 	}
 
-	public String toString(){ return "Salir de la aplicaciÃ³n"; }
+	public String toString(){ return "Salir de la aplicación"; }
 
 }

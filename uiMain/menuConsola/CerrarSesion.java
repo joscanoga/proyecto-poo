@@ -7,11 +7,11 @@ import uiMain.OpcionDeMenu;
 public class CerrarSesion extends OpcionDeMenu {
 
     public void ejecutar() {
-        System.out.print(margen + "La sesiÃ³n ha sido cerrada.\n\nPresiona Enter para continuar.");
+        System.out.print(margen + "La sesión ha sido cerrada.\n\nPresiona Enter para continuar.");
         esperarEnter();
 
         Main.usuario = new Usuario();
     }
 
-    public String toString(){ return "Cerrar sesiÃ³n"; }
+    public String toString(){ return "Cerrar sesión"; }
 }

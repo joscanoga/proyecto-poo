@@ -11,12 +11,12 @@ public class AnadirDebito extends OpcionDeMenu {
         if (filtrarOpcionesCuentaDebito("crear un d√©bito")) return;
 
         while (true) {
-            System.out.print(margen + "A√±adir d√©bito\n\n" + (textoError != null ? textoError + "\n\n" : ""));
-            System.out.format("%-20s: ", "Monto del d√©bito");
+            System.out.print(margen + "AÒadir dÈbito\n\n" + (textoError != null ? textoError + "\n\n" : ""));
+            System.out.format("%-20s: ", "Monto del dÈbito");
             if (!esNumerico(monto = entrada.next(), "float"))
-                textoError = "El monto del d√©bito debe ser un valor num√©rico, \"" + monto + "\" no lo es.";
+                textoError = "El monto del d√©bito debe ser un valor numÈrico, \"" + monto + "\" no lo es.";
             else if (Float.parseFloat(monto) <= 0)
-                textoError = "El monto del d√©bito debe ser mayor a 0, \"" + monto + "\" no lo cumple.";
+                textoError = "El monto del dÈbito debe ser mayor a 0, \"" + monto + "\" no lo cumple.";
             else break;
         }
 
@@ -24,11 +24,11 @@ public class AnadirDebito extends OpcionDeMenu {
 
         tieneDebito = true;
 
-        System.out.print(margen + "D√©bito a√±adido exitosamente.\n\nPresiona Enter para continuar.");
+        System.out.print(margen + "DÈbito aÒadido exitosamente.\n\nPresiona Enter para continuar.");
         esperarEnter();
 
     }
 
-    public String toString() { return "A√±adir d√©bito"; }
+    public String toString() { return "AÒadir dÈbito"; }
 
 }

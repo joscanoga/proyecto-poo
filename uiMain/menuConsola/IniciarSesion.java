@@ -9,25 +9,25 @@ public class IniciarSesion extends OpcionDeMenu {
         String nombreUsuario = null, textoError = null;
 
         while (true) {
-            System.out.print(margen + "INICIAR SESIÃ“N\n\n" + (textoError != null ? textoError + "\n\n" : ""));
+            System.out.print(margen + "INICIAR SESIÓN\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: " + (nombreUsuario != null ? nombreUsuario + "\n" : ""), "Nombre de usuario");
             if (nombreUsuario == null && !nombreExistente(nombreUsuario = entrada.next())) {
-                textoError = "El nombre \"" + nombreUsuario + "\" no estÃ¡ registrado.";
+                textoError = "El nombre \"" + nombreUsuario + "\" no està registrado.";
                 nombreUsuario = null;
                 continue;
             }
 
-            System.out.format("%-20s: ", "ContraseÃ±a");
+            System.out.format("%-20s: ", "Contraseña");
             if (!Main.usuarios.get(nombreUsuario).getContrasena().equals(entrada.next()))
-                textoError = "ContraseÃ±a incorrecta.";
+                textoError = "Contraseña incorrecta.";
             else break;
         }
         Main.usuario = Main.usuarios.get(nombreUsuario);
         cargarInfoUsuario();
 
-        System.out.print(margen + "SesiÃ³n iniciada.\n\nPresiona enter para continuar.");
+        System.out.print(margen + "Sesión iniciada.\n\nPresiona enter para continuar.");
         esperarEnter();
     }
 
-    public String toString(){ return "Iniciar sesiÃ³n"; }
+    public String toString(){ return "Iniciar sesión"; }
 }

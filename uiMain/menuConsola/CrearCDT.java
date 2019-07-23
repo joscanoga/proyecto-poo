@@ -10,7 +10,7 @@ public class CrearCDT extends OpcionDeMenu {
         String meses = null, textoError = null, monto = null;
 
         if (cuentaDebito == null) {
-            System.out.print(margen + "Debes tener una cuenta d√©bito para poder crear un CDT." +
+            System.out.print(margen + "Debes tener una cuenta dÈbito para poder crear un CDT." +
                     "\n\nPresiona Enter para continuar.");
         } else {
             if (filtrarSaldoNulo("crear un CDT")) return;
@@ -18,12 +18,12 @@ public class CrearCDT extends OpcionDeMenu {
                 System.out.print(margen + "CREAR CTD.\n\n" + (textoError != null ? textoError + "\n\n" : ""));
                 System.out.format("%-20s: " + (monto != null ? monto + "\n" : ""), "Monto");
                 if (monto == null && !esNumerico(monto = entrada.next(), "float")) {
-                    textoError = "El monto debe ser un valor num√©rico, \"" + monto + "\" no lo es.";
+                    textoError = "El monto debe ser un valor numerico, \"" + monto + "\" no lo es.";
                     monto = null;
                     continue;
                 } else if (Float.parseFloat(monto) <= 0 || Float.parseFloat(monto) > cuentaDebito.getSaldo()) {
-                    textoError = "El monto debe ser mayor a 0 y m√°ximo " + cuentaDebito.getSaldo() + " (saldo" +
-                            " de la cuenta d√©bito), \"" + monto + "\" no lo cumple.";
+                    textoError = "El monto debe ser mayor a 0 y m·ximo " + cuentaDebito.getSaldo() + " (saldo" +
+                            " de la cuenta dÈbito), \"" + monto + "\" no lo cumple.";
                     monto = null;
                     continue;
                 }
@@ -45,5 +45,6 @@ public class CrearCDT extends OpcionDeMenu {
         esperarEnter();
     }
 
+    
     public String toString() { return "Crear CDT"; }
 }

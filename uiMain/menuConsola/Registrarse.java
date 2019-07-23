@@ -13,15 +13,15 @@ public class Registrarse extends OpcionDeMenu {
             System.out.print(margen + "REGISTRARSE\n\n" + (textoError != null ? textoError + "\n\n" : ""));
             System.out.format("%-20s: " + (nombreUsuario != null ? nombreUsuario + "\n" : ""), "Nombre de usuario");
             if (nombreUsuario == null && nombreExistente(nombreUsuario = entrada.next())) {
-                textoError = "El nombre \"" + nombreUsuario + "\" no est√° disponible.";
+                textoError = "El nombre \"" + nombreUsuario + "\" no est· disponible.";
                 nombreUsuario = null;
                 continue;
             }
 
-            System.out.format("%-20s: ", "Contrase√±a");
+            System.out.format("%-20s: ", "ContraseÒa");
 			contrasena = entrada.next();
-			System.out.format("%-20s: ", "Verificar contrase√±a");
-            if (!contrasena.equals(entrada.next())) textoError = "Las contrase√±as no coinciden.";
+			System.out.format("%-20s: ", "Verificar contraseÒa");
+            if (!contrasena.equals(entrada.next())) textoError = "Las contraseÒas no coinciden.";
             else break;
         }
 		System.out.format("%-20s: ", "Ingresa tu nombre");

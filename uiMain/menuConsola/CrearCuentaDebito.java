@@ -11,12 +11,12 @@ public class CrearCuentaDebito extends OpcionDeMenu {
         if (cuentaDebito == null) {
             Main.usuario.anadirCuenta(cuentaNueva = new CuentaDebito(Main.usuario));
             cuentaDebito = cuentaNueva;
-            System.out.print(margen + "Cuenta d√©bito creada exitosamente.\n\nPresiona Enter para continuar.");
-        } else System.out.print(margen + "Ya tienes una cuenta d√©bito, no es posible crear m√°s.\n\nPresiona Enter " +
+            System.out.print(margen + "Cuenta dÈbito creada exitosamente.\n\nPresiona Enter para continuar.");
+        } else System.out.print(margen + "Ya tienes una cuenta dÈbito, no es posible crear m·s.\n\nPresiona Enter " +
                 "para continuar.");
 
         esperarEnter();
     }
 
-    public String toString() { return "Crear cuenta d√©dito"; }
+    public String toString() { return "Crear cuenta dÈdito"; }
 }
