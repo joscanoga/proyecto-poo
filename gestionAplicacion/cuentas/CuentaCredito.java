@@ -3,7 +3,6 @@ package gestionAplicacion.cuentas;
 import gestionAplicacion.usuarios.Usuario;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class CuentaCredito extends Cuenta {
     private float deuda;
@@ -19,7 +18,7 @@ public class CuentaCredito extends Cuenta {
     }
 
     public String toString() {
-        return id + ",Cuenta crédito," + deuda + "," + cupo + "," + interes + "," + creditos.size();
+        return id + ",Cuenta crédito," + deuda + "," + cupo + "," + interes + "%," + creditos.size();
     }
 
     public void anadirCredito(Credito credito) { creditos.add(credito); }

@@ -36,6 +36,8 @@ public class Main {
         put("EfectuarDebito", new EfectuarDebito());
         put("AnadirCredito", new AnadirCredito());
         put("VerCreditos", new VerCreditos());
+        put("PagarCuotaCredito", new PagarCuotaCredito());
+        put("PagoParcialCredito", new PagoParcialCredito());
     }};
     public static HashMap<String, Usuario> usuarios;
     public static Usuario usuario = new Usuario();

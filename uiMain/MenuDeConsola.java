@@ -28,7 +28,6 @@ public class MenuDeConsola implements Serializable, RecursosVarios {
         int contador = 0;
         for (OpcionDeMenu opcionEnMenu : opciones) {
             if (opcionEnMenu.getClass().equals(opcion.getClass())) {
-                System.out.println(opcion + "encontrada");
                 opciones.remove(contador);
                 return true;
             }
