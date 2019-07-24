@@ -1,43 +1,49 @@
 package gestionAplicacion.cuentas;
 
 import gestionAplicacion.usuarios.Usuario;
+import uiMain.Main;
+import uiMain.OpcionDeMenu;
 
 public class CDT extends Cuenta {
-    private int meses, mesesInicial;
-    private float monto, montoInicial;
-    private final float tasa = (float)0.5;
-    private boolean activo;
+    private int meses;
+    private float monto;
+    private final float tasa = (float)5;
+    private final CuentaDebito cuenta;
+    private static final String[] menuDefectoCDT = new String[]{"TranscurrirMesesEnCDT"};
 
-    public CDT(Usuario titular, float monto, int meses) {
+    public CDT(Usuario titular, CuentaDebito cuenta, float monto, int meses) {
         super(titular);
-        mesesInicial = meses;
-        montoInicial = this.monto = monto;
+        this.meses = meses;
+        this.monto = monto;
+        this.cuenta = cuenta;
+        if (!OpcionDeMenu.tieneCDT) titular.getMenu().anadirOpciones(menuDefectoCDT);
     }
 
-    public int getPlazoMeses() { return meses; }
-
-    public float getMonto() { return monto; }
-
-    public float getTasa() { return tasa; }
-
-    public boolean getActivo() { return activo; }
-
-    public void renovar(int meses) { this.meses += meses; }
-
     public void transcurirMeses(int meses) {
-        for (int i = 0; i < meses; i++) {
-            if (this.meses > 0) {
-                monto *= (1 + tasa);
-                this.meses--;
-            } else {
-                System.out.println("los meses se han transcurido,requiere renovar");
-                break;
+        this.meses -= meses;
+        monto *= Math.pow(1 + tasa / 100, meses);
+
+        if (this.meses == 0) {
+            cuenta.consignar(monto);
+            int contador = 0;
+            for (Cuenta cuenta : Main.usuario.getCuentas()) {
+                if (cuenta.getId() == id) {
+                    Main.usuario.getCuentas().remove(contador);
+                    break;
+                }
+                contador++;
             }
         }
     }
 
+    public int getMeses() { return meses; }
+
+    public float getMonto() { return monto; }
+
+    public static String[] getMenuDefectoCDT() { return menuDefectoCDT; }
+
     public String toString() {
-        return id + ",CDT," + montoInicial + "," + monto + "," + tasa + "," + mesesInicial + "," + meses;
+        return id + ",CDT," + monto + "," + tasa + "%," + meses;
     }
 
 }

@@ -19,8 +19,7 @@ public class VerCuentas extends OpcionDeMenu {
                     textoCuentas[0] = ",,SALDO,NÚMERO DE CHEQUES,NÚMERO DE DÉBITOS-" + cuenta + "-";
                 else if (infoCuenta[1].equals("CDT")) {
                     if (textoCuentas[2] == null)
-                        textoCuentas[2] = ",,MONTO INICIAL,MONTO ACTUAL,TASA DE INCREMENTO,PLAZO INICIAL," +
-                                "MESES TRANSCURRIDOS-";
+                        textoCuentas[2] = ",,MONTO ACTUAL,TASA DE INCREMENTO,MESES RESTANTES-";
                     textoCuentas[2] += cuenta + "-";
                 } else textoCuentas[1] = ",,DEUDA TOTAL,CUPO CREDITICIO,INTERÉS,NÚMERO DE CRÉDITOS-" + cuenta +
                         "-";

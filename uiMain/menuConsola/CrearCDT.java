@@ -34,7 +34,8 @@ public class CrearCDT extends OpcionDeMenu {
         }
         cuentaDebito.retirar(Float.parseFloat(monto));
 
-        Main.usuario.anadirCuenta(new CDT(Main.usuario, Float.parseFloat(monto), Integer.parseInt(meses)));
+        Main.usuario.anadirCuenta(new CDT(Main.usuario, cuentaDebito, Float.parseFloat(monto),
+                Integer.parseInt(meses)));
         tieneCDT = true;
         System.out.print(margen + "CDT creado exitosamente.\n\nPresiona Enter para continuar.");
 

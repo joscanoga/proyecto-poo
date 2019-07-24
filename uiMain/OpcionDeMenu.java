@@ -46,6 +46,15 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
         return cuentaDebito == null;
     }
 
+    public boolean filtrarOpcionesCDT(String verbo) {
+        if (!tieneCDT) {
+            System.out.print(margen +
+                    "Debes tener un CDT para poder " + verbo + ".\n\nPresiona Enter para continuar");
+            esperarEnter();
+        }
+        return !tieneCDT;
+    }
+
     public boolean filtrarSaldoNulo(String verbo) {
         if (cuentaDebito.getSaldo() == 0) {
             System.out.print(margen + "El saldo de tú cuenta débito es 0, no puedes " + verbo + ".\n\nPresiona Enter " +
