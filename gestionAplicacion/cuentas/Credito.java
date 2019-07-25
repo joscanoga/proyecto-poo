@@ -36,6 +36,8 @@ public class Credito implements Serializable {
         cuenta.aumentarDeuda(this.monto);
 
         if(!OpcionDeMenu.tieneCredito) titular.getMenu().anadirOpciones(menuDefectoDebito);
+
+        cuentaDebito.consignar(monto);
     }
 
     public void pagarCuota() {

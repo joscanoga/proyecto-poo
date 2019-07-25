@@ -20,7 +20,8 @@ public class Usuario implements Serializable {
             menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
                     "CrearCuentaCredito", "CrearCuentaDebito", "VerCuentas"}),
             menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
-                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario"});
+                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario", "NombrarNuevoAdministrador",
+                    "VerUsuarios"});
 
     // Los invitados serán los usuarios que se crean con el constructor por defecto
     public Usuario() {
@@ -41,11 +42,17 @@ public class Usuario implements Serializable {
         else menu = menuDefectoRegistrado;
     }
 
+    @Override
+    public String toString() {
+        return id + "," + nombre + "," + nombreUsuario + "," + contrasena + "," + (esAdmin ? "Sí" : "No") + "," +
+                menu.getOpciones().size() + "," + cuentas.size();
+    }
+
     public int getId() { return id; }
 
     public MenuDeConsola getMenu() { return menu; }
 
-    public boolean isEsAdmin() { return esAdmin; }
+    public boolean getEsAdmin() { return esAdmin; }
 
     public String getNombreUsuario() { return nombreUsuario; }
 
@@ -60,14 +67,6 @@ public class Usuario implements Serializable {
     public void setContrasena(String contrasena) { this.contrasena = contrasena; }
 
     public static void setContador(int cont) { contador = cont; }
-
-    // Temporal
-    @Override
-    public String toString() {
-        return "\nid=" + id + ", esAdmin=" + esAdmin + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena +
-                ", nombre=" + nombre + ", contador=" + contador + ", cuentas " +
-                "=" + cuentas;
-    }
 
     public void anadirCuenta(Cuenta cuenta) {
         System.out.println(cuentas);

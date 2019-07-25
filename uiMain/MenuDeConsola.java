@@ -24,17 +24,21 @@ public class MenuDeConsola implements Serializable, RecursosVarios {
 
     public final void anadirOpcion(OpcionDeMenu opcion) { opciones.add(opcion); }
 
-    public final boolean removerOpcion(OpcionDeMenu opcion) {
-        int contador = 0;
-        for (OpcionDeMenu opcionEnMenu : opciones) {
-            if (opcionEnMenu.getClass().equals(opcion.getClass())) {
-                opciones.remove(contador);
-                return true;
-            }
-            contador++;
-        }
-        return false;
+    public final void removerOpcion(OpcionDeMenu opcion) {
+        int indice;
+        if ((indice = tieneOpcion(opcion)) > -1) opciones.remove(indice);
     }
+
+    public final int tieneOpcion(OpcionDeMenu opcion) {
+        int contador = -1;
+        for (OpcionDeMenu opcionEnMenu : opciones) {
+            contador++;
+            if (opcionEnMenu.getClass().equals(opcion.getClass())) return contador;
+        }
+        return -1;
+    }
+
+    public ArrayList<OpcionDeMenu> getOpciones() { return opciones; }
 
     /* Se muestra el conjunto de opciones asociadas al correspondiente menu de
      * consola y se recibe entrada por parte del usuario (I/O) */
@@ -43,12 +47,8 @@ public class MenuDeConsola implements Serializable, RecursosVarios {
         OpcionDeMenu[] arregloOpciones = opciones.toArray(new OpcionDeMenu[opciones.size()]);
 
         do {
-            System.out.format(margen + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario",
-                    "OPCIÓN",
+            System.out.format(margen + "%-25s: " + Main.usuario.getNombre() + "%n%n%-25s%s%n", "Usuario", "OPCIÓN",
                     "NÚMERO");
-
-            // Temporal
-            Main.mostrarUsuarios();
 
             for (byte i = -1; ++i < arregloOpciones.length; )
                 System.out.format("%-25s%d%n", arregloOpciones[i], i + 1);

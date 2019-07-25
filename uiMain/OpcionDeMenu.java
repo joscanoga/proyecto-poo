@@ -84,8 +84,9 @@ public abstract class OpcionDeMenu implements Serializable, RecursosVarios {
 
     public boolean filtrarOpcionesCredito(String verbo) {
         if (!tieneCredito) {
-            System.out.println(margen + "No tienes créditos para " + verbo + ".\n\nPresiona Enter " +
+            System.out.print(margen + "No tienes créditos para " + verbo + ".\n\nPresiona Enter " +
                     "para continuar.");
+            esperarEnter();
         }
         return !tieneCredito;
     }

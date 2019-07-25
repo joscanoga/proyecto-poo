@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Main {
-
-    static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<String, OpcionDeMenu>() {{
+    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<>() {{
         put("AnadirOpcion", new AnadirOpcion());
         put("CambiarContrasena", new CambiarContrasena());
         put("CerrarSesion", new CerrarSesion());
@@ -39,7 +38,24 @@ public class Main {
         put("PagarCuotaCredito", new PagarCuotaCredito());
         put("PagoParcialCredito", new PagoParcialCredito());
         put("TranscurrirMesesEnCDT", new TranscurrirMesesEnCDT());
-    }};
+        put("VerUsuarios", new VerUsuarios());
+        put("NombrarNuevoAdministrador", new NombrarNuevoAdministrador());
+
+    }},
+            opcionesAdmin = new HashMap<>() {{
+                put("AnadirOpcion", new AnadirOpcion());
+                put("CambiarContrasena", new CambiarContrasena());
+                put("CerrarSesion", new CerrarSesion());
+                put("Contactenos", new Contactenos());
+                put("IniciarSesion", new IniciarSesion());
+                put("Registrarse", new Registrarse());
+                put("RemoverOpcion", new RemoverOpcion());
+                put("SalirDeLaAplicacion", new SalirDeLaAplicacion());
+                put("VerOpcionesDeUnUsuario", new VerOpcionesDeUnUsuario());
+                put("VerTodasLasOpciones", new VerTodasLasOpciones());
+                put("VerUsuarios", new VerUsuarios());
+            }};
+    ;
     public static HashMap<String, Usuario> usuarios;
     public static Usuario usuario = new Usuario();
 
@@ -47,12 +63,10 @@ public class Main {
         // Todos los usuarios y administradores registrados en la base de datos
         usuarios = Serializador.cargar();
 
-        for (; ; ) usuario.getMenu().lanzarMenu();
+        // Crear administrador
+        // usuarios.put("a", new Usuario(true, "a", "a", "Administrador"));
+
+        while (true) usuario.getMenu().lanzarMenu();
     }
 
-    // Temporal
-    static void mostrarUsuarios() {
-        for (Usuario user : usuarios.values()) System.out.println(user);
-        System.out.println();
-    }
 }

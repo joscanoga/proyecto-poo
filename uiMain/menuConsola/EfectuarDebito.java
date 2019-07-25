@@ -8,7 +8,7 @@ public class EfectuarDebito extends OpcionDeMenu {
         String textoError = null, numero;
         Debito debitoAEfectuar = null;
 
-        if (filtrarOpcionesDebito("cobrar")) return;
+        if (filtrarOpcionesDebito("debitar")) return;
 
         while (true) {
             System.out.print(margen + "EFECTUAR DÉBITO\n\n" + (textoError != null ? textoError + "\n\n" : ""));
