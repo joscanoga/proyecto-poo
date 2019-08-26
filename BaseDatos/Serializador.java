@@ -22,12 +22,12 @@ public class Serializador {
 			in = new ObjectInputStream(new BufferedInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\temp\\Usuarios.txt")));
 
-			/* El primer dato que se lee es el valor del campo estático "contador" de Usuario que se tenía antes de
+			/* El primer dato que se lee es el valor del campo estático "cantCuentas" de Usuario que se tenía antes de
 			 * finalizar la última sesión. Este campo se trata por diferente a los demás ya que el flujo de objetos no
 			 * es consistente en el valor de campos estáticos. Una vez leído dicho dato, se le reasigna al
-			 * correspondiente campo estático "contador" de Usuario para que reanude el conteo donde lo dejó. */
-			Usuario.setContador(in.readInt());
-			Cuenta.setContador(in.readInt());
+			 * correspondiente campo estático "cantCuentas" de Usuario para que reanude el conteo donde lo dejó. */
+			Usuario.setNumeroUsuarios(in.readInt());
+			Cuenta.setCantCuentas(in.readInt());
             Cheque.setContador(in.readInt());
             Debito.setContador(in.readInt());
             Credito.setContador(in.readInt());
@@ -55,11 +55,11 @@ public class Serializador {
 			out = new ObjectOutputStream(new BufferedOutputStream(
 					new FileOutputStream(System.getProperty("user.dir") + "\\src\\temp\\Usuarios.txt")));
 
-			/* Se envía manualmente el valor del campo estático "contador" de Usuario instantes antes del fin de la
+			/* Se envía manualmente el valor del campo estático "cantCuentas" de Usuario instantes antes del fin de la
 			 * ejecución de la aplicación, esto para que sea leído de igual forma, manualmente, por la próxima sesión.
 			 */
-			out.writeInt(Usuario.getContador());
-			out.writeInt(Cuenta.getContador());
+			out.writeInt(Usuario.getNumeroUsuarios());
+			out.writeInt(Cuenta.getCantCuentas());
             out.writeInt(Cheque.getContador());
             out.writeInt(Debito.getContador());
             out.writeInt(Credito.getContador());

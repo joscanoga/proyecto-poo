@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class MenuDeConsola implements Serializable, RecursosVarios {
-    private ArrayList<OpcionDeMenu> opciones = new ArrayList<>() {{
+    private ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu>() {{
         add(new uiMain.menuConsola.SalirDeLaAplicacion());
     }};
 

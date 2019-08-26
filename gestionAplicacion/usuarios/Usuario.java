@@ -6,70 +6,70 @@ import uiMain.MenuDeConsola;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Usuario implements Serializable {
+public abstract class Usuario implements Serializable {
     private final int id;
     private MenuDeConsola menu;
-    private boolean esAdmin;
-    private String nombreUsuario, contrasena, nombre;
-    private static int contador;
+    protected String nombreUsuario;
+
+    private static int numeroUsuarios;
     private ArrayList<Cuenta> cuentas = new ArrayList<>();
 
+    //constructor de la clase "padre" Usuario
+    public Usuario(int id,String nombreUsuario) {
+        this.id = id;
+        this.nombreUsuario=nombreUsuario;
+        //menu = menuDefectoInvitado;
+       }
+    public void setNombreUsuario(String nom) {nombreUsuario=nom;}
+    public String getNombreUsuario() { return nombreUsuario; }
+    public int getId() { return id; }
+    public String   getTipoUsuario() {return(this.getClass().getSimpleName());}
+    
+    
+    
+    
+    
+    
+    
+//    private final MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion",
+//            "Contactenos"}),
+//            menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
+//                    "CrearCuentaCredito", "CrearCuentaDebito", "VerCuentas"}),
+//            menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
+//                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario", "NombrarNuevoAdministrador",
+//                    "VerUsuarios"});
 
-    private final MenuDeConsola menuDefectoInvitado = new MenuDeConsola(new String[]{"Registrarse", "IniciarSesion",
-            "Contactenos"}),
-            menuDefectoRegistrado = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "CrearCDT",
-                    "CrearCuentaCredito", "CrearCuentaDebito", "VerCuentas"}),
-            menuDefectoAdmin = new MenuDeConsola(new String[]{"CerrarSesion", "CambiarContrasena", "AnadirOpcion",
-                    "RemoverOpcion", "VerTodasLasOpciones", "VerOpcionesDeUnUsuario", "NombrarNuevoAdministrador",
-                    "VerUsuarios"});
-
-    // Los invitados serán los usuarios que se crean con el constructor por defecto
-    public Usuario() {
-        id = 0;
-        menu = menuDefectoInvitado;
-        nombre = "Invitado";
-    }
 
     // Constructor para usuarios de tipo administrador y registrado
-    public Usuario(boolean esAdmin, String nombreUsuario, String contrasena, String nombre) {
-        id = ++contador;
-        this.esAdmin = esAdmin;
-        this.nombreUsuario = nombreUsuario;
-        this.contrasena = contrasena;
-        this.nombre = nombre;
+//    public Usuario(boolean esAdmin, String nombreUsuario, String contrasena, String nombre) {
+//        id = ++numeroUsuarios;
+//        this.esAdmin = esAdmin;
+//        this.nombreUsuario = nombreUsuario;
+//        this.contrasena = contrasena;
+//        this.nombre = nombre;
+//
+//        if (esAdmin) menu = menuDefectoAdmin;
+//        else menu = menuDefectoRegistrado;
+//    }
 
-        if (esAdmin) menu = menuDefectoAdmin;
-        else menu = menuDefectoRegistrado;
-    }
+    
 
-    @Override
-    public String toString() {
-        return id + "," + nombre + "," + nombreUsuario + "," + contrasena + "," + (esAdmin ? "Sí" : "No") + "," +
-                menu.getOpciones().size() + "," + cuentas.size();
-    }
+//    public MenuDeConsola getMenu() { return menu; }
 
-    public int getId() { return id; }
+   
 
-    public MenuDeConsola getMenu() { return menu; }
 
-    public boolean getEsAdmin() { return esAdmin; }
 
-    public String getNombreUsuario() { return nombreUsuario; }
+//    public static int getNumeroUsuarios() { return numeroUsuarios; }
 
-    public String getContrasena() { return contrasena; }
+  
 
-    public String getNombre() { return nombre; }
 
-    public static int getContador() { return contador; }
 
-    public ArrayList<Cuenta> getCuentas() { return cuentas; }
+//    public static void setNumeroUsuarios(int cont) { numeroUsuarios = cont; }
 
-    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
-
-    public static void setContador(int cont) { contador = cont; }
-
-    public void anadirCuenta(Cuenta cuenta) {
-        System.out.println(cuentas);
-        cuentas.add(cuenta);
-    }
+//    public void anadirCuenta(Cuenta cuenta) {
+//        System.out.println(cuentas);
+//        cuentas.add(cuenta);
+//    }
 }

@@ -2,13 +2,14 @@ package uiMain;
 
 import BaseDatos.Serializador;
 import gestionAplicacion.usuarios.Usuario;
+import gestionAplicacion.usuarios.UsuarioInvitado;
 import uiMain.menuConsola.*;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public class Main {
-    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<>() {{
+    public static final HashMap<String, OpcionDeMenu> listaOpciones = new HashMap<String, OpcionDeMenu>() {{
         put("AnadirOpcion", new AnadirOpcion());
         put("CambiarContrasena", new CambiarContrasena());
         put("CerrarSesion", new CerrarSesion());
@@ -41,8 +42,8 @@ public class Main {
         put("VerUsuarios", new VerUsuarios());
         put("NombrarNuevoAdministrador", new NombrarNuevoAdministrador());
 
-    }},
-            opcionesAdmin = new HashMap<>() {{
+    }};
+    		HashMap<String,OpcionDeMenu>   opcionesAdmin = new HashMap<String,OpcionDeMenu>() {{
                 put("AnadirOpcion", new AnadirOpcion());
                 put("CambiarContrasena", new CambiarContrasena());
                 put("CerrarSesion", new CerrarSesion());
@@ -57,7 +58,7 @@ public class Main {
             }};
     ;
     public static HashMap<String, Usuario> usuarios;
-    public static Usuario usuario = new Usuario();
+    public static Usuario usuario = new UsuarioInvitado();
 
     public static void main(String[] args) throws IOException {
         // Todos los usuarios y administradores registrados en la base de datos

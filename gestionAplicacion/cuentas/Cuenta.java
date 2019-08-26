@@ -22,9 +22,9 @@ public abstract class Cuenta implements Serializable {
 
     public int getId() { return id; }
 
-    public static int getContador() { return contador; }
+    public static int getCantCuentas() { return contador; }
 
     public Usuario getTitular() { return titular; }
 
-    public static void setContador(int contador) { Cuenta.contador = contador; }
+    public static void setCantCuentas(int cantCuentas) { Cuenta.contador = cantCuentas; }
 }
