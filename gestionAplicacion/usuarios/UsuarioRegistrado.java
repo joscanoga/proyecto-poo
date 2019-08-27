@@ -18,5 +18,10 @@ public class UsuarioRegistrado extends Usuario {
     public void setContrasena(String contrasena) { this.contrasena = contrasena; }
     public void setNombre(String nombre) {this.nombre=nombre;}
     public void cerrarSeccion() {uiMain.Main.usuario=new UsuarioInvitado();}
+    public Boolean comprobarclave(String nombreUsuario,String contrasena) {
+    	if (this.nombreUsuario.equals(nombreUsuario)&&this.contrasena.equals(contrasena)) {
+    		return true;
+    	}else return false;
+    }
 
 }

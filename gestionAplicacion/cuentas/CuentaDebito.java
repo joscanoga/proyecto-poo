@@ -1,30 +1,35 @@
 package gestionAplicacion.cuentas;
 
+import gestionAplicacion.usuarios.Cliente;
 import gestionAplicacion.usuarios.Usuario;
 
 import java.util.ArrayList;
 
+import excepciones.IdNoValido;
+import excepciones.ValorIncorrecto;
+
 
 public class CuentaDebito extends Cuenta {
-    private float saldo;
+    private float saldo=0;
     private ArrayList<Debito> debitos = new ArrayList<>();
     private ArrayList<Cheque> cheques = new ArrayList<>();
 
     private static final String[] menuDefectoCuentasDebito = new String[]{"Consignar", "Retirar", "Transferir",
             "LibrarCheque", "AnadirDebito"};
 
-    public CuentaDebito(Usuario titular) {
+    public CuentaDebito(Cliente titular) {
         super(titular);
-        titular.getMenu().anadirOpciones(menuDefectoCuentasDebito);
+//        titular.getMenu().anadirOpciones(menuDefectoCuentasDebito);
     }
 
-    public void retirar(float valor) { saldo -= valor; }
+    public void retirar(float valor) throws ValorIncorrecto { if(saldo>valor) {saldo -= valor;}
+    else throw new ValorIncorrecto();}
 
     public void consignar(float valor) {
         saldo += valor;
     }
 
-    public void transferir(CuentaDebito destino, float valor) {
+    public void transferir(CuentaDebito destino, float valor) throws ValorIncorrecto{
         this.retirar(valor);
         destino.consignar(valor);
     }
@@ -37,7 +42,7 @@ public class CuentaDebito extends Cuenta {
         int contador = 0;
         for (Debito debito : debitos) {
             if (debito.getId() == id) {
-                debito.removerOpciones();
+//                debito.removerOpciones();
                 debitos.remove(contador);
                 return;
             }
@@ -45,7 +50,7 @@ public class CuentaDebito extends Cuenta {
         }
     }
 
-    public void abonarCredito(Credito credito, Float valor) {
+    public void abonarCredito(Credito credito, Float valor) throws ValorIncorrecto{
         this.retirar(valor);
         credito.pagarParcial(valor);
     }
@@ -61,4 +66,11 @@ public class CuentaDebito extends Cuenta {
     public ArrayList<Debito> getDebitos() { return debitos; }
 
     public void setSaldo(float saldo) { this.saldo = saldo; }
+    public void removerCheque(int id)throws IdNoValido {
+    	boolean removido=false;
+    	for (Cheque cheque : cheques) {
+    		if (cheque.getId()==id){cheques.remove(cheque);
+    		removido=true;}	}
+    	if(!removido) {throw new IdNoValido();}
+    }
 }

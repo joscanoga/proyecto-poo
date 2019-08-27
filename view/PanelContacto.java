@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import controller.ControlAtras;
 import controller.ControlLogin;
 import controller.ControlRegistro;
 

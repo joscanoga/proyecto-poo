@@ -28,4 +28,8 @@ public class Cliente extends UsuarioRegistrado {
 		if (cuenta.equals(null)) {throw new IdNoValido();}//esta execcion se trata dede donde se llama
 		return cuenta;
 	}
+	public void eliminarCuenta(int id) throws IdNoValido {
+		cuentas.remove(this.getCuenta(id));
+		
+	}
 }

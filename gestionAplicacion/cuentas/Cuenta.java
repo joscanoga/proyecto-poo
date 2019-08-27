@@ -1,15 +1,17 @@
 package gestionAplicacion.cuentas;
 
+import gestionAplicacion.usuarios.Cliente;
 import gestionAplicacion.usuarios.Usuario;
+
 
 import java.io.Serializable;
 
 public abstract class Cuenta implements Serializable {
     protected final int id;
-    protected Usuario titular;
+    protected Cliente titular;
     protected static int contador;
 
-    public Cuenta(Usuario titular) {
+    public Cuenta(Cliente titular) {
         id = ++contador;
         this.titular = titular;
     }
@@ -22,9 +24,9 @@ public abstract class Cuenta implements Serializable {
 
     public int getId() { return id; }
 
-    public static int getCantCuentas() { return contador; }
+    public static int getContador() { return contador; }
 
     public Usuario getTitular() { return titular; }
 
-    public static void setCantCuentas(int cantCuentas) { Cuenta.contador = cantCuentas; }
+    public static void setContador(int cantCuentas) { Cuenta.contador = cantCuentas; }
 }

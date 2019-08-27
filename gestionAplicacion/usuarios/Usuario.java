@@ -12,7 +12,7 @@ public abstract class Usuario implements Serializable {
     protected String nombreUsuario;
 
     private static int numeroUsuarios;
-    private ArrayList<Cuenta> cuentas = new ArrayList<>();
+    private ArrayList<UsuarioRegistrado> usuarios = new ArrayList<>();
 
     //constructor de la clase "padre" Usuario
     public Usuario(int id,String nombreUsuario) {
@@ -24,6 +24,10 @@ public abstract class Usuario implements Serializable {
     public String getNombreUsuario() { return nombreUsuario; }
     public int getId() { return id; }
     public String   getTipoUsuario() {return(this.getClass().getSimpleName());}
+    public static int getNumeroUsuarios() {return(numeroUsuarios);}
+    public void agregarUsuario(UsuarioRegistrado usuario) {
+    	usuarios.add(usuario);}
+    public ArrayList<UsuarioRegistrado> getUsuarios() {return(usuarios);} 	
     
     
     

@@ -1,5 +1,6 @@
 package gestionAplicacion.cuentas;
 
+import gestionAplicacion.usuarios.Cliente;
 import gestionAplicacion.usuarios.Usuario;
 import uiMain.Main;
 import uiMain.OpcionDeMenu;
@@ -9,14 +10,16 @@ public class CDT extends Cuenta {
     private float monto;
     private final float tasa = (float)5;
     private final CuentaDebito cuenta;
-    private static final String[] menuDefectoCDT = new String[]{"TranscurrirMesesEnCDT"};
+    private boolean activo;
+//    private static final String[] menuDefectoCDT = new String[]{"TranscurrirMesesEnCDT"};
 
-    public CDT(Usuario titular, CuentaDebito cuenta, float monto, int meses) {
+    public CDT(Cliente titular, CuentaDebito cuenta, float monto, int meses) {
         super(titular);
         this.meses = meses;
         this.monto = monto;
         this.cuenta = cuenta;
-        if (!OpcionDeMenu.tieneCDT) titular.getMenu().anadirOpciones(menuDefectoCDT);
+        this.activo=true;
+//        if (!OpcionDeMenu.tieneCDT) titular.getMenu().anadirOpciones(menuDefectoCDT);
     }
 
     public void transcurirMeses(int meses) {
@@ -25,22 +28,16 @@ public class CDT extends Cuenta {
 
         if (this.meses == 0) {
             cuenta.consignar(monto);
-            int contador = 0;
-            for (Cuenta cuenta : Main.usuario.getCuentas()) {
-                if (cuenta.getId() == id) {
-                    Main.usuario.getCuentas().remove(contador);
-                    break;
-                }
-                contador++;
+            this.titular.removerCuenta(id);
             }
-        }
+        
     }
-
+    public void renovar(int meses) {this.meses+=meses;}
     public int getMeses() { return meses; }
-
+    public Float getTasa() {return tasa;}
     public float getMonto() { return monto; }
-
-    public static String[] getMenuDefectoCDT() { return menuDefectoCDT; }
+    public boolean getActivo() {return activo;}
+//    public static String[] getMenuDefectoCDT() { return menuDefectoCDT; }
 
     public String toString() {
         return id + ",CDT," + monto + "," + tasa + "%," + meses;

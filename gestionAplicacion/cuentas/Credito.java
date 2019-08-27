@@ -5,6 +5,8 @@ import uiMain.OpcionDeMenu;
 
 import java.io.Serializable;
 
+import excepciones.ValorIncorrecto;
+
 public class Credito implements Serializable {
     private final int id;
     private final CuentaCredito cuenta;
@@ -35,12 +37,12 @@ public class Credito implements Serializable {
         cuenta.disminuirCupo(monto);
         cuenta.aumentarDeuda(this.monto);
 
-        if(!OpcionDeMenu.tieneCredito) titular.getMenu().anadirOpciones(menuDefectoDebito);
+//        if(!OpcionDeMenu.tieneCredito) titular.getMenu().anadirOpciones(menuDefectoDebito);
 
         cuentaDebito.consignar(monto);
     }
 
-    public void pagarCuota() {
+    public void pagarCuota() throws ValorIncorrecto {
         cuentaDebito.retirar(valorCuota);
 
         monto -= valorCuota;
@@ -52,7 +54,7 @@ public class Credito implements Serializable {
         if (cuotas == 0) monto = 0;
     }
 
-    public void pagarParcial(float pago) {
+    public void pagarParcial(float pago) throws ValorIncorrecto {
         cuentaDebito.retirar(pago);
 
         float pagoSinIntereses = pago / valorCuota * valorCuotaSinIntereses;
@@ -83,6 +85,7 @@ public class Credito implements Serializable {
     public static String[] getMenuDefectoDebito() { return menuDefectoDebito; }
 
     public static void setContador(int contador) { Credito.contador = contador; }
+    public CuentaCredito getCuenta() {return cuenta;}
 
 }
 	

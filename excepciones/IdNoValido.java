@@ -1,6 +1,6 @@
 package excepciones;
 
-public class IdNoValido extends ErrorLogico{
+public class IdNoValido extends Errorcuenta{
 	public IdNoValido() {
 	super("identificador no encontrado");}
 }
