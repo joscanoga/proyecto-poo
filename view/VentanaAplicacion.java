@@ -4,7 +4,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.*;
-import controller.ControlEstandar;
+import controller.*;
 import controller.ControlMenu;
 import javax.swing.*;
 

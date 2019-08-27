@@ -12,7 +12,7 @@ public class UsuarioInvitado extends Usuario {
 		agregarUsuario(new Cliente(id,nombreUsuario,contrasena,nombre));
 		
 	}
-	public void iniciarSeccion(String nombreUsuario,String contrasena)throws ErrorLogin {
+	public static void login (String nombreUsuario,String contrasena)throws ErrorLogin {
 		ArrayList<UsuarioRegistrado> usuarios=getUsuarios();
 		boolean login=false;
 		for(UsuarioRegistrado usu : usuarios) {

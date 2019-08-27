@@ -27,7 +27,7 @@ public class Serializador {
 			 * es consistente en el valor de campos estáticos. Una vez leído dicho dato, se le reasigna al
 			 * correspondiente campo estático "cantCuentas" de Usuario para que reanude el conteo donde lo dejó. */
 			Usuario.setNumeroUsuarios(in.readInt());
-			Cuenta.setCantCuentas(in.readInt());
+			Cuenta.setContador(in.readInt());
             Cheque.setContador(in.readInt());
             Debito.setContador(in.readInt());
             Credito.setContador(in.readInt());
@@ -59,7 +59,7 @@ public class Serializador {
 			 * ejecución de la aplicación, esto para que sea leído de igual forma, manualmente, por la próxima sesión.
 			 */
 			out.writeInt(Usuario.getNumeroUsuarios());
-			out.writeInt(Cuenta.getCantCuentas());
+			out.writeInt(Cuenta.getContador());
             out.writeInt(Cheque.getContador());
             out.writeInt(Debito.getContador());
             out.writeInt(Credito.getContador());

@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 
-import model.gestorAplicacion.users.Usuario;
+import excepciones.ErrorLogin;
+import gestionAplicacion.usuarios.*;
+//import model.gestorAplicacion.users.Usuario;
 import view.PanelInicio;
 import view.PanelLogin;
 import view.VentanaAplicacion;
@@ -17,7 +19,12 @@ public class ControlLogin implements ActionListener{
 		PanelLogin panel =(PanelLogin) VentanaAplicacion.contenedor.getComponent(0);
 		String usuario = panel.usuario.getText();
 		String password = panel.password.getText();
-		Usuario.login(usuario, password);
+		try {
+			UsuarioInvitado.login(usuario, password);
+		} catch (ErrorLogin e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();//tratar error
+		}
 		
 		VentanaAplicacion.barraMenu.removeAll();
 		JMenuItem menuInicio = new JMenuItem("Inicio");
