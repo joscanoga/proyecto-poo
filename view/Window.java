@@ -27,7 +27,7 @@ public class Window extends JFrame implements MouseListener, ActionListener {
 
     private static byte imageIndex = 0;
     public static  byte getimageIndex() {return imageIndex;}
-    final String[] imageSources = {"text.png", "logo.png", "money.png"};
+    final String[] imageSources = {"text.png", "logo.png", "money.png","wilder.png"};
 
     String activeUser = "";
 
@@ -42,7 +42,8 @@ public class Window extends JFrame implements MouseListener, ActionListener {
 
         P1 = new JPanel();
         P1.setLayout(new GridLayout(2, 1, 0, 10));
-        welcomeLabel = new Label("Bienvenido");
+        welcomeLabel = new Label("Bienvenid@ a GreenBank");
+        welcomeLabel.setFont(new Font("Arial",Font.BOLD+Font.ITALIC,26)); 
         welcomeLabel.addMouseListener(this);
         Image img = ImageIO.read(getClass().getResource("text.png"));
         imagesButton = new JButton();
@@ -53,7 +54,13 @@ public class Window extends JFrame implements MouseListener, ActionListener {
 
         P2 = new JPanel();
         P2.setLayout(new GridLayout(2, 1, 0, 10));
-        infoText = new JTextArea("que hace el sistema,\n\n\n\n\n\n\n\nquien lo desarrollo\n\n\n\n\n\n\ny como funciona");
+        infoText = new JTextArea("Green Bank es una aplicacion bancaria que se encarga de la gestión de\r "
+        		+ "las finanzas de los usuarios que son clientes de misma, se brindan muchas facilidades para nuestros clientes,"
+        		+ "como la creacion de cuentas debito y credito, la emision de cheques y la apertura de cuentas CDT.\n\n\n\n\n\nEste proyecto fue desarrollado por: "
+        		+ "Wilder Camilo Castro Ramos, Juan Fernando Dederle Baena y Johan Sebastian Cano Garcia\n\n\n\n\n\nEl usuario inicialente"
+        		+ "debe registrarse en la aplicacion o iniciar sesión si ya es cliente de la misma, desde alli puede acceder a un menu de opciones "
+        		+ "que le permite visualizar las cuentas que tiene actualmente y crear las cuentas de su preferencia, tambien le da todas las facilidades"
+        		+ "que le permite realizar transacciones a sus cuentas.");
         infoText.setLineWrap(true);
         infoText.setEditable(false);
         infoTextScrollPane = new JScrollPane(infoText);
@@ -146,7 +153,7 @@ public class Window extends JFrame implements MouseListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(imagesButton)) {
 
-            imageIndex += (imageIndex == 2 ? -2 : 1);
+            imageIndex += (imageIndex == 3 ? -2 : 1);
             Image img = null;
             try {
                 img = ImageIO.read(getClass().getResource(imageSources[imageIndex]));
