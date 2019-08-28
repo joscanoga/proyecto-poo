@@ -2,8 +2,8 @@ package gestionAplicacion.cuentas;
 
 import gestionAplicacion.usuarios.Cliente;
 import gestionAplicacion.usuarios.Usuario;
-import uiMain.Main;
-import uiMain.OpcionDeMenu;
+//import uiMain.Main;
+//import uiMain.OpcionDeMenu;
 
 public class CDT extends Cuenta {
     private int meses;

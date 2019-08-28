@@ -1,7 +1,7 @@
 package gestionAplicacion.cuentas;
 
 import gestionAplicacion.usuarios.Usuario;
-import uiMain.OpcionDeMenu;
+//import uiMain.OpcionDeMenu;
 
 import java.io.Serializable;
 

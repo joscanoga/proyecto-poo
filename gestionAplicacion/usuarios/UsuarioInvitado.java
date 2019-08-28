@@ -2,24 +2,25 @@ package gestionAplicacion.usuarios;
 
 import java.util.ArrayList;
 import excepciones.*;
-import uiMain.Main;
+import greenBank.GreenBank;
+//import uiMain.Main;
 
 public class UsuarioInvitado extends Usuario {
 	public UsuarioInvitado() {
 		super(0,"Invitado");
 	}
-	public void registrarse(int id, String nombreUsuario, String contrasena, String nombre) {
+	public static void registrarse(int id, String nombreUsuario, String contrasena, String nombre) {
 		agregarUsuario(new Cliente(id,nombreUsuario,contrasena,nombre));
 		
 	}
 	public static void login (String nombreUsuario,String contrasena)throws ErrorLogin {
-		ArrayList<UsuarioRegistrado> usuarios=getUsuarios();
+		ArrayList<Usuario> usuarios=getUsuarios();
 		boolean login=false;
-		for(UsuarioRegistrado usu : usuarios) {
+		for(Usuario usu : usuarios) {
 			
 			if(usu.getNombreUsuario().equals(nombreUsuario)) {
-				if(usu.comprobarclave(nombreUsuario, contrasena)) {
-					Main.usuario=usu;
+				if(((UsuarioRegistrado) usu).comprobarclave(nombreUsuario, contrasena)) {
+					GreenBank.setUsuario(usu);
 					login=true;
 					break;
 					}

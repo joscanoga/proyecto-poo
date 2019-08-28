@@ -1,19 +1,24 @@
 package gestionAplicacion.usuarios;
 
 import gestionAplicacion.cuentas.Cuenta;
-import uiMain.MenuDeConsola;
+//import uiMain.MenuDeConsola;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import BaseDatos.Serializador;
+
 public abstract class Usuario implements Serializable {
     private final int id;
-    private MenuDeConsola menu;
+//    private MenuDeConsola menu;
     protected String nombreUsuario;
 
     private static int numeroUsuarios;
-    private static ArrayList<UsuarioRegistrado> usuarios = new ArrayList<>();
-
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
+//    private boolean admin;
+//    public boolean getAdmin() {return admin;}
+//    public void setAdmin(boolean t) {admin=t;}
     //constructor de la clase "padre" Usuario
     public Usuario(int id,String nombreUsuario) {
         this.id = id;
@@ -25,12 +30,12 @@ public abstract class Usuario implements Serializable {
     public int getId() { return id; }
     public String   getTipoUsuario() {return(this.getClass().getSimpleName());}
     public static int getNumeroUsuarios() {return(numeroUsuarios);}
-    public void agregarUsuario(UsuarioRegistrado usuario) {
+    public static void agregarUsuario(UsuarioRegistrado usuario) {
     	usuarios.add(usuario);}
-    public static ArrayList<UsuarioRegistrado> getUsuarios() {return(usuarios);}
+    public static ArrayList<Usuario> getUsuarios() {return(usuarios);}
     public static  void setNumeroUsuarios(int cant) {numeroUsuarios=cant;}
-    
-    
+    public static void  cargarUsusario() throws IOException {usuarios.addAll(Serializador.cargar()) ;}
+    public static void guardarUsuarios() throws IOException {Serializador.guardar(usuarios);}
     
     
     

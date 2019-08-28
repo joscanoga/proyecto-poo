@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class Serializador {
 
-	public static HashMap<String, Usuario> cargar() throws IOException {
+	public static ArrayList<Usuario> cargar() throws IOException {
 		ObjectInputStream in = null;
 		ArrayList<Usuario> usuarios = new ArrayList<>();
 		HashMap<String, Usuario> tablaUsuarios;
@@ -40,15 +40,15 @@ public class Serializador {
 				in.close();
 		}
 
-		tablaUsuarios = new HashMap<>(usuarios.size());
+//		tablaUsuarios = new HashMap<>(usuarios.size());
+//
+//		for (Usuario usuario : usuarios)
+//			tablaUsuarios.put(usuario.getNombreUsuario(), usuario);
 
-		for (Usuario usuario : usuarios)
-			tablaUsuarios.put(usuario.getNombreUsuario(), usuario);
-
-		return tablaUsuarios;
+		return usuarios;
 	}
 
-	public static void guardar(HashMap<String, Usuario> usuarios) throws IOException {
+	public static void guardar(ArrayList<Usuario> usuarios) throws IOException {
 		ObjectOutputStream out = null;
 
 		try {
@@ -64,8 +64,8 @@ public class Serializador {
             out.writeInt(Debito.getContador());
             out.writeInt(Credito.getContador());
 
-			for (Map.Entry<String, Usuario> registro : usuarios.entrySet())
-				out.writeObject(registro.getValue());
+			for (Usuario registro : usuarios)
+				out.writeObject(registro);
 		} finally {
 			if (out != null)
 				out.close();

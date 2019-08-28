@@ -8,6 +8,7 @@ public class UsuarioRegistrado extends Usuario {
 		super(id, nombreUsuario);
 		this.contrasena=contrasena;
 		this.nombre=nombre;
+		super.setNumeroUsuarios(getNumeroUsuarios()+1);
 	}
 
    
@@ -17,7 +18,7 @@ public class UsuarioRegistrado extends Usuario {
     public String getNombre() { return nombre; }
     public void setContrasena(String contrasena) { this.contrasena = contrasena; }
     public void setNombre(String nombre) {this.nombre=nombre;}
-    public void cerrarSeccion() {uiMain.Main.usuario=new UsuarioInvitado();}
+    public void cerrarSeccion() {greenBank.GreenBank.setUsuario(new UsuarioInvitado());}
     public Boolean comprobarclave(String nombreUsuario,String contrasena) {
     	if (this.nombreUsuario.equals(nombreUsuario)&&this.contrasena.equals(contrasena)) {
     		return true;
